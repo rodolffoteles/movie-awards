@@ -6,8 +6,11 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 100%;
   justify-content: center;
+  align-items: center;
 `;
+
 const Home = () => {
   let rank = [1, 2, 3, 4, 5];
 
