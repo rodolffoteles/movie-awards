@@ -5,6 +5,7 @@ import MovieCard from '../components/moviecard';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
 `;
 const Home = () => {

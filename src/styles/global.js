@@ -2,9 +2,11 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
+    color: #FFFFFF;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
-    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
   }
 
   html, body {
