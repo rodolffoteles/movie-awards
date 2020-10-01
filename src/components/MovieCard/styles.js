@@ -29,18 +29,19 @@ export const Poster = styled.div`
 
 export const AddButton = styled.button`
   align-items: center;
-  background-color: #002263;
+  background: #002263;
   border-radius: 0.5rem;
   color: #002e86;
   display: flex;
   font-size: 7rem;
   height: 100%;
   justify-content: center;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: all 0.2s ease;
+  transition-property: background, color;
   width: 100%;
 
   &:hover {
-    background-color: #042b76;
+    background: #042b76;
     color: #043fb0;
   }
 `;

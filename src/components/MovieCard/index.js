@@ -7,13 +7,15 @@ import {
   Description,
 } from './styles';
 
-const MovieCard = ({ rank, movie }) => {
+const MovieCard = ({ rank, movie, removeMovie }) => {
   return (
     <Wrapper>
       <Poster>
         {movie ? (
           <>
-            <DeleteButton>&times;</DeleteButton>
+            <DeleteButton onClick={() => removeMovie(rank)}>
+              &times;
+            </DeleteButton>
             <img src={movie.poster} alt={movie.title} />
             <h1>{rank}</h1>
           </>
