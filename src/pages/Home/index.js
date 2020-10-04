@@ -1,9 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Wrapper } from './styles';
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as MovieActions from '../actions';
-import MovieCard from '../components/MovieCard';
+import * as MovieActions from '../../actions';
+
+import MovieCard from '../../components/MovieCard';
 
 const mapStateToProps = state => ({
   movies: state,
@@ -12,21 +14,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(MovieActions, dispatch),
 });
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-
-  > section {
-    margin-top: 3rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-`;
 
 const Home = ({ movies, actions }) => {
   let rank = [1, 2, 3, 4, 5];

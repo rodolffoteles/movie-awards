@@ -20,7 +20,7 @@ const MovieCard = ({ rank, movie, removeMovie }) => {
             <h1>{rank}</h1>
           </>
         ) : (
-          <AddButton>
+          <AddButton to="/search">
             +<h1>{rank}</h1>
           </AddButton>
         )}

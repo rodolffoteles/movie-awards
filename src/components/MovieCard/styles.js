@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   margin: 1rem;
@@ -27,7 +28,7 @@ export const Poster = styled.div`
   }
 `;
 
-export const AddButton = styled.button`
+export const AddButton = styled(Link)`
   align-items: center;
   background: #002263;
   border-radius: 0.5rem;

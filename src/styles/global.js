@@ -14,12 +14,8 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
-  html, body {
-    overflow-y: scroll;
-  }
-
   body {
-    background: linear-gradient(#00081A, #00113A);
+    background: linear-gradient(#00081A, #00113A) fixed;
   }
 
   button {
