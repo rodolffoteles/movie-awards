@@ -13,7 +13,12 @@ export const Wrapper = styled.div`
   > section {
     margin-top: 3rem;
     display: flex;
+    align-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
-    justify-content: center;
+
+    > div {
+      margin: 0 1.5rem 1rem 0;
+    }
   }
 `;

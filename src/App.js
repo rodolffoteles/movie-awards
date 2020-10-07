@@ -17,12 +17,8 @@ function App() {
         <GlobalStyle />
 
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/search">
-            <Search />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route path="/search" component={Search} />
         </Switch>
       </Router>
     </Provider>

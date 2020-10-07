@@ -2,29 +2,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
-  margin: 1rem;
   width: 10rem;
-
-  h1 {
-    color: #f8d500;
-    font-size: 7rem;
-    font-weight: bold;
-    position: absolute;
-    bottom: -3.5rem;
-  }
-`;
-
-export const Poster = styled.div`
-  display: flex;
-  height: 15rem;
-  justify-content: center;
   position: relative;
-  text-align: center;
 
-  & > img {
+  img {
+    height: 15rem;
     border-radius: 0.5rem;
     width: 100%;
-    height: 100%;
   }
 `;
 
@@ -35,8 +19,9 @@ export const AddButton = styled(Link)`
   color: #002e86;
   display: flex;
   font-size: 7rem;
-  height: 100%;
+  height: 15rem;
   justify-content: center;
+  text-decoration: none;
   transition: all 0.2s ease;
   transition-property: background, color;
   width: 100%;
@@ -66,6 +51,16 @@ export const DeleteButton = styled.button`
 
 export const Description = styled.div`
   position: relative;
-  margin-top: 3rem;
   text-align: center;
+  padding-top: 3rem;
+
+  h1 {
+    color: #f8d500;
+    font-size: 7rem;
+    position: absolute;
+    font-weight: 600;
+    width: 100%;
+    pointer-events: none;
+    top: -5rem;
+  }
 `;
