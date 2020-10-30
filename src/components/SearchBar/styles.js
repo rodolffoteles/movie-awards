@@ -16,8 +16,10 @@ export const Wrapper = styled.div`
 
 export const InputField = styled.input`
   background: #002263;
-  border: 0.1rem solid #002263;
+  border: 2px solid #002263;
   border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
   padding: 0.5rem 1rem 0.5rem 3rem;
   width: 100%;
 
