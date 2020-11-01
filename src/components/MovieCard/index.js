@@ -1,16 +1,28 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeMovie, showSheet } from '../../actions';
 import { Wrapper, DeleteButton, AddButton, Description } from './styles';
 
-const MovieCard = ({ rank, movie, removeMovie, chooseMovie }) => {
+const MovieCard = ({ rank, movie }) => {
+  const dispatch = useDispatch();
+
+  const handleRemoveMovie = () => {
+    dispatch(removeMovie(rank));
+  };
+
+  const handleAddMovie = () => {
+    dispatch(showSheet(rank));
+  };
+
   return (
     <Wrapper>
       {movie ? (
         <>
-          <DeleteButton onClick={() => removeMovie(rank)}>&times;</DeleteButton>
+          <DeleteButton onClick={handleRemoveMovie}>&times;</DeleteButton>
           <img src={movie.poster} alt={movie.title} />
         </>
       ) : (
-        <AddButton onClick={() => chooseMovie(rank)}>+</AddButton>
+        <AddButton onClick={handleAddMovie}>+</AddButton>
       )}
       <Description>
         <h1>{rank}</h1>

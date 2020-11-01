@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMovie, hideSheet } from '../../actions';
 import { Wrapper, MovieItem } from './styles';
 
-// TODO: Get result from Omdb API
+// TODO: Get result from OMDB API
 const MOVIES_RESULT = [
   {
     imdb_id: 'tt0892769',
@@ -20,7 +22,16 @@ const MOVIES_RESULT = [
     actors: 'Jay Baruchel, Gerard Butler',
   },
 ];
+
 const MovieList = () => {
+  const dispatch = useDispatch();
+  const selectedRank = useSelector(state => state.sheet.selectedRank);
+
+  const handleAddMovie = movie => {
+    dispatch(addMovie(movie, selectedRank));
+    dispatch(hideSheet());
+  };
+
   return (
     <Wrapper>
       {MOVIES_RESULT.map(movie => (
@@ -32,7 +43,14 @@ const MovieList = () => {
             <div>{movie.actors}</div>
           </div>
 
-          <button title="Add movie">+</button>
+          <button
+            title="Add movie"
+            onClick={() => {
+              handleAddMovie(movie);
+            }}
+          >
+            +
+          </button>
         </MovieItem>
       ))}
     </Wrapper>

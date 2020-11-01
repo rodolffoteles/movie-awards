@@ -1,5 +1,5 @@
 export default {
-  textLight: '#ffffffff',
+  textLight: '#ffffff',
 
   primaryLightest: '#043fb0',
   primaryLighter: '#002e86',

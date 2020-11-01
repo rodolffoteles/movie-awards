@@ -18,3 +18,18 @@ export const removeMovie = rank => {
     },
   };
 };
+
+export const showSheet = rank => {
+  return {
+    type: ActionTypes.SHOW_SHEET,
+    payload: {
+      rank,
+    },
+  };
+};
+
+export const hideSheet = () => {
+  return {
+    type: ActionTypes.HIDE_SHEET,
+  };
+};

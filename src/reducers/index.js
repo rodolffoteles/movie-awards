@@ -1,3 +1,8 @@
-import movies from './movies';
+import { combineReducers } from 'redux';
+import moviesReducer from './movies';
+import sheetReducer from './sheet';
 
-export default movies;
+export default combineReducers({
+  movies: moviesReducer,
+  sheet: sheetReducer,
+});
