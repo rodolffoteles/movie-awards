@@ -1,26 +1,23 @@
 import React from 'react';
-import GlobalStyle from './styles/global';
+import { ThemeProvider } from 'styled-components';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+
 import reducer from './reducers';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import colors from './styles/colors';
+import GlobalStyle from './styles/global';
 
 import Home from './pages/Home';
-import Search from './pages/Search';
 
 const store = createStore(reducer);
 
 function App() {
   return (
     <Provider store={store}>
-      <Router>
+      <ThemeProvider theme={colors}>
         <GlobalStyle />
-
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/search" component={Search} />
-        </Switch>
-      </Router>
+        <Home />
+      </ThemeProvider>
     </Provider>
   );
 }

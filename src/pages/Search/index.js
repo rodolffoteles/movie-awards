@@ -1,17 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Wrapper } from './styles';
-import { ReactComponent as BackArrowIcon } from '../../assets/back-arrow.svg';
+import { Wrapper, CloseButton } from './styles';
+import { ReactComponent as CloseIcon } from '../../assets/close.svg';
 import SearchBar from '../../components/SearchBar';
 import MovieList from '../../components/MovieList';
 
-const Search = () => {
+const Search = ({ open, onClose }) => {
+  if (!open) return null;
+
   return (
     <Wrapper>
       <header>
-        <Link to="/">
-          <BackArrowIcon />
-        </Link>
+        <CloseButton onClick={onClose}>
+          <CloseIcon />
+        </CloseButton>
         <h2>Choose the movie</h2>
         <SearchBar />
       </header>

@@ -15,8 +15,8 @@ export const Wrapper = styled.div`
 `;
 
 export const InputField = styled.input`
-  background: #002263;
-  border: 2px solid #002263;
+  background: ${props => props.theme.primary};
+  border: 2px solid ${props => props.theme.primary};
   border-radius: 1rem;
   font-size: 1rem;
   font-weight: 500;
@@ -24,10 +24,10 @@ export const InputField = styled.input`
   width: 100%;
 
   &:focus {
-    border-color: #f8d500;
+    border-color: ${props => props.theme.secondary};
   }
 
   &:focus + svg {
-    fill: #f8d500;
+    fill: ${props => props.theme.secondary};
   }
 `;

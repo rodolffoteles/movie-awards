@@ -13,7 +13,7 @@ export const MovieItem = styled.li`
   text-decoration: none;
 
   &:hover {
-    background: #021f63;
+    background: ${props => props.theme.primary};
   }
 
   img {
@@ -25,7 +25,7 @@ export const MovieItem = styled.li`
   button {
     align-self: center;
     background: transparent;
-    border: 2px solid #ffffff;
+    border: 2px solid ${props => props.theme.textLight};
     border-radius: 100%;
     font-size: 1.5rem;
     font-weight: 700;
@@ -35,8 +35,8 @@ export const MovieItem = styled.li`
     width: 2.5rem;
 
     &:hover {
-      background: #ffffff;
-      color: #021f63;
+      background: ${props => props.theme.textLight};
+      color: ${props => props.theme.primary};
     }
   }
 `;

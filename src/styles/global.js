@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
-    color: #FFFFFF;
+    color: #ffffff;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
     margin: 0;

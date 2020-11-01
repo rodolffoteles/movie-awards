@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper, DeleteButton, AddButton, Description } from './styles';
 
-const MovieCard = ({ rank, movie, removeMovie }) => {
+const MovieCard = ({ rank, movie, removeMovie, chooseMovie }) => {
   return (
     <Wrapper>
       {movie ? (
@@ -10,7 +10,7 @@ const MovieCard = ({ rank, movie, removeMovie }) => {
           <img src={movie.poster} alt={movie.title} />
         </>
       ) : (
-        <AddButton to="/search">+</AddButton>
+        <AddButton onClick={() => chooseMovie(rank)}>+</AddButton>
       )}
       <Description>
         <h1>{rank}</h1>
