@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
   background-color: ${props => props.theme.primaryDark};
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  width: 100%;
 
-  header {
+  > header {
     padding: 1.25rem 1rem;
 
     > h2 {
@@ -17,6 +19,11 @@ export const Wrapper = styled.div`
       margin-bottom: 1rem;
       padding-left: 1.5rem;
     }
+  }
+
+  > div {
+    height: 100%;
+    overflow-y: auto;
   }
 `;
 
@@ -32,7 +39,7 @@ export const CloseButton = styled.button`
   > svg {
     height: 1rem;
     width: 1rem;
-    fill: ${props => props.theme.primaryLightest};
+    fill: ${props => props.theme.textLight};
   }
 
   &:hover > svg {
@@ -41,9 +48,5 @@ export const CloseButton = styled.button`
 
   &:focus {
     background: ${props => props.theme.primaryLightest};
-
-    > svg {
-      fill: ${props => props.theme.textLight};
-    }
   }
 `;

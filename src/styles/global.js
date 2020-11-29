@@ -9,9 +9,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  html, body, #root {
+  html, body {
     height: 100%;
-    width: 100%;
   }
 
   body {

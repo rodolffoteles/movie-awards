@@ -10,16 +10,18 @@ const Home = () => {
   const rank = [1, 2, 3, 4, 5];
 
   return (
-    <Wrapper>
-      <h1>Rank the five best movies you've ever watched</h1>
-      <section>
-        {rank.map(number => (
-          <MovieCard key={number} rank={number} movie={movies[number]} />
-        ))}
-      </section>
+    <>
+      <Wrapper>
+        <h1>Rank the five best movies you've ever watched</h1>
+        <section>
+          {rank.map(number => (
+            <MovieCard key={number} rank={number} movie={movies[number]} />
+          ))}
+        </section>
+      </Wrapper>
 
       <Search />
-    </Wrapper>
+    </>
   );
 };
 

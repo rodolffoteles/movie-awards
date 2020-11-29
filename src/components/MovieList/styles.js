@@ -4,11 +4,10 @@ export const Wrapper = styled.ul`
   list-style: none;
 `;
 
-export const MovieItem = styled.li`
+export const MovieListItem = styled.li`
   border-top: 0.1rem solid rgba(255, 255, 255, 0.2);
   display: grid;
   grid-template-columns: auto 1fr 0.25fr;
-  overflow: auto;
   padding: 1rem 0.75rem;
   text-decoration: none;
 
@@ -18,8 +17,8 @@ export const MovieItem = styled.li`
 
   img {
     border-radius: 0.5rem;
-    height: 6rem;
     margin-right: 1rem;
+    width: 4rem;
   }
 
   button {
