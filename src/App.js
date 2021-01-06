@@ -1,18 +1,12 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import store from './store';
 
-import reducer from './reducers';
+import { ThemeProvider } from 'styled-components';
 import colors from './styles/colors';
 import GlobalStyle from './styles/global';
 
 import Home from './pages/Home';
-
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
 
 function App() {
   return (
