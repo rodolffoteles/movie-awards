@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideSidePanel } from '../../actions';
+import { hideSidePanel, searchMovies } from '../../actions';
 
 import MovieCard from '../../components/MovieCard';
 import SidePanel from '../../components/SidePanel';
@@ -10,12 +10,15 @@ import MovieList from '../../components/MovieList';
 import { Wrapper, SearchBarWrapper, Scrollable } from './styles';
 
 const Home = () => {
-  const [searchResult, setSearchResult] = useState([]);
   const dispatch = useDispatch();
 
-  const toggleSidePannel = () => dispatch(hideSidePanel());
-  const movies = useSelector(state => state.movies);
   const sidePanelIsOpen = useSelector(state => state.ui.sidePanelIsOpen);
+  const { isLoading, error, searchResult } = useSelector(state => state.search);
+  const toggleSidePannel = () => dispatch(hideSidePanel());
+
+  const handleSearch = searchTerm => dispatch(searchMovies(searchTerm));
+
+  const movies = useSelector(state => state.rank);
   const rank = [1, 2, 3, 4, 5];
 
   return (
@@ -35,15 +38,14 @@ const Home = () => {
         onClose={toggleSidePannel}
       >
         <SearchBarWrapper>
-          <SearchBar
-            placeholder="Movie title"
-            setSearchResult={setSearchResult}
-          />
+          <SearchBar placeholder="Movie title" onChangeText={handleSearch} />
         </SearchBarWrapper>
 
-        <Scrollable>
-          <MovieList movies={searchResult} />
-        </Scrollable>
+        {searchResult && (
+          <Scrollable>
+            <MovieList movies={searchResult} />
+          </Scrollable>
+        )}
       </SidePanel>
     </>
   );

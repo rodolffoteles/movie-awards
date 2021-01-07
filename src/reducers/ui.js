@@ -1,7 +1,7 @@
 import * as ActionTypes from '../actions/types';
 
 const INITIAL_STATE = {
-  sidePanelIsOpen: true,
+  sidePanelIsOpen: false,
   selectedRank: null,
 };
 

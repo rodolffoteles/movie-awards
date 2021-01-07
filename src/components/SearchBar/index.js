@@ -1,31 +1,13 @@
-import React, { useState } from 'react';
-import api from '../../services/api';
+import React from 'react';
 import { ReactComponent as MagnifierIcon } from '../../assets/magnifier.svg';
-import { Wrapper, InputField } from './styles';
+import { Wrapper } from './styles';
 
-const SearchBar = ({ setSearchResult, placeholder, onChange }) => {
-  const [input, setInput] = useState('');
-
-  const handleInput = async event => {
-    if (event.key === 'Enter') {
-      const response = await api.get('/', {
-        params: { s: input },
-      });
-
-      if (response.status === 200) {
-        setSearchResult(response.data.search);
-      }
-    }
-  };
+const SearchBar = ({ placeholder, onChangeText, value }) => {
+  const hangleChange = event => onChangeText(event.target.value);
 
   return (
     <Wrapper>
-      <input
-        type="search"
-        placeholder={placeholder}
-        onChange={event => setInput(event.target.value)}
-        onKeyPress={handleInput}
-      ></input>
+      <input type="search" placeholder={placeholder} onChange={hangleChange} />
       <MagnifierIcon />
     </Wrapper>
   );

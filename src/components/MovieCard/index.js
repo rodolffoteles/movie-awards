@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeMovie, showSidePanel } from '../../actions';
+import { unrankMovie, showSidePanel } from '../../actions';
 import { Wrapper, DeleteButton, AddButton, Description } from './styles';
 
 const MovieCard = ({ rank, movie }) => {
   const dispatch = useDispatch();
 
   const handleRemoveMovie = () => {
-    dispatch(removeMovie(rank));
+    dispatch(unrankMovie(rank));
   };
 
   const handleAddMovie = () => {

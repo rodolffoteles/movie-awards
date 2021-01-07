@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMovie, hideSidePanel } from '../../actions';
+import { rankMovie, hideSidePanel } from '../../actions';
 import { Wrapper, MovieListItem } from './styles';
 
 const MovieList = ({ movies }) => {
@@ -8,7 +8,7 @@ const MovieList = ({ movies }) => {
   const selectedRank = useSelector(state => state.ui.selectedRank);
 
   const handleAddMovie = movie => {
-    dispatch(addMovie(movie, selectedRank));
+    dispatch(rankMovie(movie, selectedRank));
     dispatch(hideSidePanel());
   };
 
@@ -16,19 +16,14 @@ const MovieList = ({ movies }) => {
     <Wrapper>
       {movies.map(movie => (
         <MovieListItem key={movie.imdbId}>
-          <img src={movie.poster} />
+          <img src={movie.poster} alt={`"${movie.title}" poster`} />
           <div>
             <h3>{movie.title}</h3>
             <div>{movie.year}</div>
             <div>{movie.actors}</div>
           </div>
 
-          <button
-            title="Add movie"
-            onClick={() => {
-              handleAddMovie(movie);
-            }}
-          >
+          <button title="Add movie" onClick={() => handleAddMovie(movie)}>
             +
           </button>
         </MovieListItem>

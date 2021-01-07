@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import debounce from './middleware/debouce';
+import api from './middleware/api';
 import rootReducer from './reducers';
 
 const composeEnhancers =
@@ -9,7 +10,7 @@ const composeEnhancers =
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(debounce))
+  composeEnhancers(applyMiddleware(debounce, api))
 );
 
 export default store;

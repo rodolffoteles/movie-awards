@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import moviesReducer from './movies';
+import rankReducer from './rank';
+import searchReducer from './search';
 import uiReducer from './ui';
 
 export default combineReducers({
-  movies: moviesReducer,
+  rank: rankReducer,
+  search: searchReducer,
   ui: uiReducer,
 });
