@@ -1,15 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMovie, hideSheet } from '../../actions';
+import { addMovie, hideSidePanel } from '../../actions';
 import { Wrapper, MovieListItem } from './styles';
 
 const MovieList = ({ movies }) => {
   const dispatch = useDispatch();
-  const selectedRank = useSelector(state => state.sheet.selectedRank);
+  const selectedRank = useSelector(state => state.ui.selectedRank);
 
   const handleAddMovie = movie => {
     dispatch(addMovie(movie, selectedRank));
-    dispatch(hideSheet());
+    dispatch(hideSidePanel());
   };
 
   return (

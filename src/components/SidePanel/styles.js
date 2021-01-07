@@ -11,29 +11,17 @@ export const Wrapper = styled.div`
   width: 100%;
 
   > header {
-    padding: 1.25rem 1rem;
-
-    > h2 {
-      text-align: center;
-      white-space: nowrap;
-      margin-bottom: 1rem;
-      padding-left: 1.5rem;
-    }
-  }
-
-  > div {
-    height: 100%;
-    overflow-y: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
   }
 `;
 
 export const CloseButton = styled.button`
-  align-items: center;
   display: flex;
   padding: 0.5rem;
   background: transparent;
   border-radius: 0.5rem;
-  float: right;
   transition: background 0.2s ease-out;
 
   > svg {

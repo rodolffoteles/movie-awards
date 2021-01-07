@@ -1,12 +1,21 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { hideSidePanel } from '../../actions';
 
-import { Wrapper } from './styles';
 import MovieCard from '../../components/MovieCard';
-import Search from '../Search';
+import SidePanel from '../../components/SidePanel';
+import SearchBar from '../../components/SearchBar';
+import MovieList from '../../components/MovieList';
+
+import { Wrapper, SearchBarWrapper, Scrollable } from './styles';
 
 const Home = () => {
+  const [searchResult, setSearchResult] = useState([]);
+  const dispatch = useDispatch();
+
+  const toggleSidePannel = () => dispatch(hideSidePanel());
   const movies = useSelector(state => state.movies);
+  const sidePanelIsOpen = useSelector(state => state.ui.sidePanelIsOpen);
   const rank = [1, 2, 3, 4, 5];
 
   return (
@@ -20,7 +29,22 @@ const Home = () => {
         </section>
       </Wrapper>
 
-      <Search />
+      <SidePanel
+        title="Choose the movie"
+        isOpen={sidePanelIsOpen}
+        onClose={toggleSidePannel}
+      >
+        <SearchBarWrapper>
+          <SearchBar
+            placeholder="Movie title"
+            setSearchResult={setSearchResult}
+          />
+        </SearchBarWrapper>
+
+        <Scrollable>
+          <MovieList movies={searchResult} />
+        </Scrollable>
+      </SidePanel>
     </>
   );
 };

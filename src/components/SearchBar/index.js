@@ -3,7 +3,7 @@ import api from '../../services/api';
 import { ReactComponent as MagnifierIcon } from '../../assets/magnifier.svg';
 import { Wrapper, InputField } from './styles';
 
-const SearchBar = ({ setSearchResult }) => {
+const SearchBar = ({ setSearchResult, placeholder, onChange }) => {
   const [input, setInput] = useState('');
 
   const handleInput = async event => {
@@ -11,7 +11,6 @@ const SearchBar = ({ setSearchResult }) => {
       const response = await api.get('/', {
         params: { s: input },
       });
-      console.log(response);
 
       if (response.status === 200) {
         setSearchResult(response.data.search);
@@ -21,12 +20,12 @@ const SearchBar = ({ setSearchResult }) => {
 
   return (
     <Wrapper>
-      <InputField
-        type="text"
-        placeholder="Movie title"
+      <input
+        type="search"
+        placeholder={placeholder}
         onChange={event => setInput(event.target.value)}
         onKeyPress={handleInput}
-      ></InputField>
+      ></input>
       <MagnifierIcon />
     </Wrapper>
   );

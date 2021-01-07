@@ -11,14 +11,20 @@ export const Wrapper = styled.div`
   }
 
   > section {
-    margin-top: 3rem;
-    display: flex;
     align-content: center;
-    justify-content: center;
+    display: flex;
     flex-wrap: wrap;
-
-    > div {
-      margin: 0 0.75rem 1rem 0.75rem;
-    }
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
   }
+`;
+
+export const SearchBarWrapper = styled.div`
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+`;
+
+export const Scrollable = styled.div`
+  overflow: scroll;
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeMovie, showSheet } from '../../actions';
+import { removeMovie, showSidePanel } from '../../actions';
 import { Wrapper, DeleteButton, AddButton, Description } from './styles';
 
 const MovieCard = ({ rank, movie }) => {
@@ -11,7 +11,7 @@ const MovieCard = ({ rank, movie }) => {
   };
 
   const handleAddMovie = () => {
-    dispatch(showSheet(rank));
+    dispatch(showSidePanel(rank));
   };
 
   return (

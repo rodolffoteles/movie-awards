@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import moviesReducer from './movies';
-import sheetReducer from './sheet';
+import uiReducer from './ui';
 
 export default combineReducers({
   movies: moviesReducer,
-  sheet: sheetReducer,
+  ui: uiReducer,
 });
