@@ -16,7 +16,7 @@ const MovieList = ({ movies }) => {
     <Wrapper>
       {movies.map(movie => (
         <MovieListItem key={movie.imdbId}>
-          <img src={movie.poster} alt={`"${movie.title}" poster`} />
+          <img src={movie.poster} alt={`${movie.title} poster`} />
           <div>
             <h3>{movie.title}</h3>
             <div>{movie.year}</div>

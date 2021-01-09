@@ -12,12 +12,17 @@ const apiMiddleware = ({ dispatch }) => next => async action => {
     const response = await api.get(url, { params: params });
 
     if (response.status >= 300) {
-      dispatch({ type: ERROR, payload: response.status });
+      dispatch({ type: ERROR, payload: { error: response.status } });
+    } else if (response.data.response !== 'True') {
+      // Since the API does not use the HTTP status 404 code to indicate
+      // that the resource is not found. It's necessary to set the empty
+      // array as a searching result.
+      dispatch({ type: SUCCESS, payload: { search: [] } });
     } else {
       dispatch({ type: SUCCESS, payload: response.data });
     }
   } catch (error) {
-    dispatch({ type: ERROR, payload: error });
+    dispatch({ type: ERROR, payload: { error: error.message } });
   }
 };
 

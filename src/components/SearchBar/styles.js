@@ -4,12 +4,13 @@ export const Wrapper = styled.div`
   position: relative;
 
   svg {
+    fill: rgba(255, 255, 255, 0.5);
     left: 1rem;
+    pointer-events: none;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    position: absolute;
     width: 1.25rem;
-    fill: rgba(255, 255, 255, 0.5);
   }
 
   input {

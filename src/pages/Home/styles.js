@@ -24,7 +24,3 @@ export const SearchBarWrapper = styled.div`
   padding: 0 1rem;
   margin-bottom: 1rem;
 `;
-
-export const Scrollable = styled.div`
-  overflow: scroll;
-`;

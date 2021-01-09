@@ -5,14 +5,8 @@ import { Wrapper, DeleteButton, AddButton, Description } from './styles';
 
 const MovieCard = ({ rank, movie }) => {
   const dispatch = useDispatch();
-
-  const handleRemoveMovie = () => {
-    dispatch(unrankMovie(rank));
-  };
-
-  const handleAddMovie = () => {
-    dispatch(showSidePanel(rank));
-  };
+  const handleRemoveMovie = () => dispatch(unrankMovie(rank));
+  const handleAddMovie = () => dispatch(showSidePanel(rank));
 
   return (
     <Wrapper>

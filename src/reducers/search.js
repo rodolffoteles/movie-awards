@@ -1,25 +1,34 @@
 import * as ActionTypes from '../actions/types';
 
-const initialState = {
+const INITIAL_STATE = {
+  searchTerm: null,
   isLoading: false,
   error: null,
   searchResult: [],
 };
 
-export default (state = {}, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ActionTypes.FETCH_MOVIE_REQUEST:
+    case ActionTypes.SET_SEARCH_TERM:
+      return { ...state, searchTerm: action.payload.searchTerm };
+    case ActionTypes.SEARCH_MOVIE_REQUEST:
       return { ...state, isLoading: true };
-    case ActionTypes.FETCH_MOVIE_ERROR:
-      return { ...state, isLoading: false, error: action.payload.error };
-    case ActionTypes.FETCH_MOVIE_SUCCESS:
+    case ActionTypes.SEARCH_MOVIE_ERROR:
       return {
         ...state,
         isLoading: false,
+        error: action.payload.error,
+        searchResult: [],
+      };
+    case ActionTypes.SEARCH_MOVIE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
         searchResult: action.payload.search,
       };
     case ActionTypes.HIDE_SIDE_PANEL:
-      return initialState;
+      return INITIAL_STATE;
     default:
       return state;
   }
