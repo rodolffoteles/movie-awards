@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import rankReducer from './rank';
+import rankingReducer from './ranking';
 import searchReducer from './search';
 import uiReducer from './ui';
 
 export default combineReducers({
-  rank: rankReducer,
+  ranking: rankingReducer,
   search: searchReducer,
   ui: uiReducer,
 });

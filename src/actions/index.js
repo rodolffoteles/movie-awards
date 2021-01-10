@@ -1,3 +1,3 @@
 export * from './search';
-export * from './rank';
+export * from './ranking';
 export * from './ui';

@@ -1,7 +1,7 @@
 export const FETCH_API = 'api/FETCH_API';
 
-export const RANK_MOVIE = 'rank/RANK_MOVIE';
-export const UNRANK_MOVIE = 'rank/UNRANK_MOVIE';
+export const RANK_MOVIE = 'ranking/RANK_MOVIE';
+export const UNRANK_MOVIE = 'ranking/UNRANK_MOVIE';
 
 export const SET_SEARCH_TERM = 'search/SET_SEARCH_TERM';
 export const SEARCH_MOVIE_REQUEST = 'search/SEARCH_MOVIE_REQUEST';

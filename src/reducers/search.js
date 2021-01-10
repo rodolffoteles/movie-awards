@@ -1,7 +1,7 @@
 import * as ActionTypes from '../actions/types';
 
 const INITIAL_STATE = {
-  searchTerm: null,
+  searchTerm: '',
   isLoading: false,
   error: null,
   searchResult: [],

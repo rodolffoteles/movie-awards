@@ -15,17 +15,23 @@ const Home = () => {
   const sidePanelIsOpen = useSelector(state => state.ui.sidePanelIsOpen);
   const toggleSidePannel = () => dispatch(hideSidePanel());
 
+  const searchTerm = useSelector(state => state.search.searchTerm);
+
   const handleSearch = searchTerm => {
     dispatch(setSearchTerm(searchTerm));
     dispatch(searchMovie(searchTerm));
   };
 
-  const movies = useSelector(state => state.rank);
+  const movies = useSelector(state => state.ranking);
   const rank = [1, 2, 3, 4, 5];
 
   return (
     <>
       <Wrapper>
+        <header>
+          <h1>Movie Awards</h1>
+        </header>
+
         <h1>Rank the five best movies you've ever watched</h1>
         <section>
           {rank.map(number => (
@@ -40,7 +46,11 @@ const Home = () => {
         onClose={toggleSidePannel}
       >
         <SearchBarWrapper>
-          <SearchBar placeholder="Movie title" onChangeText={handleSearch} />
+          <SearchBar
+            placeholder="Movie title"
+            value={searchTerm}
+            onChangeText={handleSearch}
+          />
         </SearchBarWrapper>
 
         <SearchResult />

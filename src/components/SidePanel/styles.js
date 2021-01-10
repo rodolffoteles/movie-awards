@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
 
   > header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 1rem;
   }
@@ -40,26 +41,4 @@ export const Backdrop = styled.div`
   transition: opacity 0.3 ease;
   visibility: ${props => !props.isOpen && 'hidden'};
   z-index: 2;
-`;
-
-export const CloseButton = styled.button`
-  display: flex;
-  padding: 0.5rem;
-  background: transparent;
-  border-radius: 0.5rem;
-  transition: background 0.2s ease-out;
-
-  > svg {
-    height: 1rem;
-    width: 1rem;
-    fill: ${props => props.theme.textLight};
-  }
-
-  &:hover > svg {
-    fill: ${props => props.theme.textLight};
-  }
-
-  &:focus {
-    background: ${props => props.theme.primaryLightest};
-  }
 `;

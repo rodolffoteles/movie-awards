@@ -6,6 +6,12 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
+  > header {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+  }
+
   > h1 {
     text-align: center;
   }

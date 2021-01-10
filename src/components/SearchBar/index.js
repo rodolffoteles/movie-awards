@@ -7,7 +7,12 @@ const SearchBar = ({ placeholder, onChangeText, value }) => {
 
   return (
     <Wrapper>
-      <input type="search" placeholder={placeholder} onChange={hangleChange} />
+      <input
+        type="search"
+        value={value}
+        placeholder={placeholder}
+        onChange={hangleChange}
+      />
       <MagnifierIcon />
     </Wrapper>
   );

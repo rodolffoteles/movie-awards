@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Wrapper, CloseButton, Backdrop } from './styles';
+import Button from '../Button';
+
+import { Wrapper, Backdrop } from './styles';
 
 const SidePanel = ({ children, title, isOpen, onClose }) => {
   return (
@@ -8,7 +10,9 @@ const SidePanel = ({ children, title, isOpen, onClose }) => {
       <Wrapper role="dialog" isOpen={isOpen}>
         <header>
           <h2>{title}</h2>
-          <CloseButton onClick={onClose}>✕</CloseButton>
+          <Button onlyIcon onClick={onClose}>
+            ✕
+          </Button>
         </header>
 
         {children}
