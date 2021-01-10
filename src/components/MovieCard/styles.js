@@ -15,19 +15,23 @@ export const AddButton = styled.button`
   align-items: center;
   background: ${props => props.theme.primary};
   border-radius: 0.5rem;
-  color: ${props => props.theme.primaryLighter};
+  color: rgba(80, 133, 234, 0.5);
   display: flex;
   font-size: 7rem;
   height: 15rem;
   justify-content: center;
   text-decoration: none;
   transition: all 0.2s ease;
-  transition-property: background, color;
   width: 100%;
 
   &:hover {
     background: ${props => props.theme.primaryLight};
-    color: ${props => props.theme.primaryLightest};
+    color: rgba(80, 133, 234, 0.8);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
   }
 `;
 

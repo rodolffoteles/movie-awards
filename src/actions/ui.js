@@ -3,9 +3,7 @@ import * as ActionTypes from './types';
 export const showSidePanel = rank => {
   return {
     type: ActionTypes.SHOW_SIDE_PANEL,
-    payload: {
-      rank,
-    },
+    payload: { rank },
   };
 };
 

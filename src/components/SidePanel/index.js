@@ -1,23 +1,20 @@
 import React from 'react';
-import { ReactComponent as CloseIcon } from '../../assets/close.svg';
 
-import { Wrapper, CloseButton } from './styles';
+import { Wrapper, CloseButton, Backdrop } from './styles';
 
 const SidePanel = ({ children, title, isOpen, onClose }) => {
   return (
     <>
-      {isOpen && (
-        <Wrapper role="dialog">
-          <header>
-            <h2>{title}</h2>
-            <CloseButton onClick={onClose}>
-              <CloseIcon />
-            </CloseButton>
-          </header>
+      <Wrapper role="dialog" isOpen={isOpen}>
+        <header>
+          <h2>{title}</h2>
+          <CloseButton onClick={onClose}>✕</CloseButton>
+        </header>
 
-          {children}
-        </Wrapper>
-      )}
+        {children}
+      </Wrapper>
+
+      <Backdrop onClick={onClose} isOpen={isOpen} />
     </>
   );
 };
