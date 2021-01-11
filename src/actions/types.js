@@ -10,3 +10,5 @@ export const SEARCH_MOVIE_ERROR = 'search/SEARCH_MOVIE_ERROR';
 
 export const SHOW_SIDE_PANEL = 'ui/SHOW_SIDE_PANEL';
 export const HIDE_SIDE_PANEL = 'ui/HIDE_SIDE_PANEL';
+export const SHOW_MODAL = 'ui/SHOW_MODAL';
+export const HIDE_MODAL = 'ui/HIDE_MODAL';

@@ -12,3 +12,15 @@ export const hideSidePanel = () => {
     type: ActionTypes.HIDE_SIDE_PANEL,
   };
 };
+
+export const showModal = () => {
+  return {
+    type: ActionTypes.SHOW_MODAL,
+  };
+};
+
+export const hideModal = () => {
+  return {
+    type: ActionTypes.HIDE_MODAL,
+  };
+};

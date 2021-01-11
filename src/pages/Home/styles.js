@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 
   > header {
-    width: 100%;
-    padding: 2rem;
     display: flex;
+    padding: 2rem;
+    width: 100%;
   }
 
   > h1 {
@@ -23,10 +23,11 @@ export const Wrapper = styled.div`
     gap: 2rem;
     justify-content: center;
     margin-top: 3rem;
+    padding: 0 2rem;
   }
 `;
 
 export const SearchBarWrapper = styled.div`
-  padding: 0 1rem;
   margin-bottom: 1rem;
+  padding: 0 1rem;
 `;
