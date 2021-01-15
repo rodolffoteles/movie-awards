@@ -52,7 +52,7 @@ const Home = () => {
       <Modal isOpen={modalIsOpen} onClose={toggleModal}>
         <img src={AwardImage} />
         <h1>Great!</h1>
-        <p>You completed your ranking. </p>
+        <p>You completed your ranking.</p>
         <p>These are indeed really good movies.</p>
       </Modal>
 

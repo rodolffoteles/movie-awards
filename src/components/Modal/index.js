@@ -1,17 +1,21 @@
 import React from 'react';
 
-import Button from '../../components/Button';
-import { Wrapper, Backdrop } from './styles';
+import Overlay from '../Overlay';
+import Button from '../Button';
+import Backdrop from '../Backdrop';
 
-const Modal = ({ title, isOpen, onClose, children }) => {
+import { Wrapper } from './styles';
+
+const Modal = ({ isOpen, onClose, children }) => {
   return (
-    <>
+    <Overlay onClose={onClose}>
       <Wrapper isOpen={isOpen}>
         <Button onClick={onClose}>✕</Button>
         {children}
       </Wrapper>
+
       <Backdrop isOpen={isOpen} onClick={onClose} />
-    </>
+    </Overlay>
   );
 };
 

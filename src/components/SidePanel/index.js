@@ -1,12 +1,14 @@
 import React from 'react';
 
+import Overlay from '../Overlay';
 import Button from '../Button';
+import Backdrop from '../Backdrop';
 
-import { Wrapper, Backdrop } from './styles';
+import { Wrapper } from './styles';
 
 const SidePanel = ({ children, title, isOpen, onClose }) => {
   return (
-    <>
+    <Overlay onClose={onClose}>
       <Wrapper role="dialog" isOpen={isOpen}>
         <header>
           <h2>{title}</h2>
@@ -19,7 +21,7 @@ const SidePanel = ({ children, title, isOpen, onClose }) => {
       </Wrapper>
 
       <Backdrop onClick={onClose} isOpen={isOpen} />
-    </>
+    </Overlay>
   );
 };
 
