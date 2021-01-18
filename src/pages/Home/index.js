@@ -50,7 +50,7 @@ const Home = () => {
       </Wrapper>
 
       <Modal isOpen={modalIsOpen} onClose={toggleModal}>
-        <img src={AwardImage} />
+        <img src={AwardImage} alt="Man and Woman dressed up holding an award" />
         <h1>Great!</h1>
         <p>You completed your ranking.</p>
         <p>These are indeed really good movies.</p>

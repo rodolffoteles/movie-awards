@@ -26,6 +26,7 @@ export const MovieListItem = styled.li`
     background: transparent;
     border: 2px solid ${props => props.theme.textLight};
     border-radius: 100%;
+    cursor: auto;
     font-size: 1.5rem;
     font-weight: 700;
     height: 2.5rem;
@@ -33,7 +34,11 @@ export const MovieListItem = styled.li`
     margin-left: 1rem;
     width: 2.5rem;
 
-    &:hover {
+    &:disabled {
+      opacity: 0.3;
+    }
+
+    &:hover:enabled {
       background: ${props => props.theme.textLight};
       color: ${props => props.theme.primary};
     }

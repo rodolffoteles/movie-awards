@@ -4,7 +4,7 @@ import { Wrapper } from './styles';
 
 const Button = ({ onlyIcon, onClick, children }) => {
   return (
-    <Wrapper onlyIcon onClick={onClick}>
+    <Wrapper onlyIcon={onlyIcon} onClick={onClick}>
       {children}
     </Wrapper>
   );
