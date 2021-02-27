@@ -1,6 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
 
-const Overlay = ({ children, onClose }) => {
+interface OverlayProps {
+  children: React.ReactNode;
+  onClose(): void;
+}
+
+const Overlay = ({ children, onClose }: OverlayProps) => {
   const handleKeyUp = useCallback(
     event => {
       if (event.key === 'Escape') {

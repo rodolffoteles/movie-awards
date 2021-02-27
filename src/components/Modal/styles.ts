@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ isOpen: boolean }>`
   background: #fff;
   border-radius: 0.5rem;
   color: #000;

@@ -1,9 +1,17 @@
 import React from 'react';
 import { ReactComponent as MagnifierIcon } from '../../assets/magnifier.svg';
+
 import { Wrapper } from './styles';
 
-const SearchBar = ({ placeholder, onChangeText, value }) => {
-  const hangleChange = event => onChangeText(event.target.value);
+interface SearchBarProps {
+  placeholder: string;
+  onChange(value: string): void;
+  value: string;
+}
+
+const SearchBar = ({ placeholder, onChange, value }: SearchBarProps) => {
+  const hangleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    onChange(event.target.value);
 
   return (
     <Wrapper>

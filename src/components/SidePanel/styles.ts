@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import breakpoints from '../../styles/tokens/breakpoints';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ isOpen: boolean }>`
   background-color: ${props => props.theme.primaryDark};
   bottom: 0;
   box-shadow: 0 31px 41px 0 rgba(0, 0, 0, 0.5);

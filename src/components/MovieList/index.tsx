@@ -1,9 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { rankMovie, hideSidePanel } from '../../actions';
+
+import { Movie } from '../../types';
+
 import { Wrapper, MovieListItem } from './styles';
 
-const MovieList = ({ movies }) => {
+interface MovieListProps {
+  movies: Movie[];
+}
+
+const MovieList = ({ movies }: MovieListProps) => {
   const dispatch = useDispatch();
   const selectedRank = useSelector(state => state.ui.selectedRank);
 

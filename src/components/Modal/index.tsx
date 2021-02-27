@@ -6,7 +6,13 @@ import Backdrop from '../Backdrop';
 
 import { Wrapper } from './styles';
 
-const Modal = ({ isOpen, onClose, children }) => {
+interface ModalProps {
+  children: React.ReactNode;
+  isOpen: boolean;
+  onClose(): void;
+}
+
+const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   return (
     <Overlay onClose={onClose}>
       <Wrapper isOpen={isOpen}>

@@ -6,15 +6,20 @@ import Backdrop from '../Backdrop';
 
 import { Wrapper } from './styles';
 
-const SidePanel = ({ children, title, isOpen, onClose }) => {
+interface SidePanelProps {
+  children: React.ReactNode;
+  title: string;
+  isOpen: boolean;
+  onClose(): void;
+}
+
+const SidePanel = ({ children, title, isOpen, onClose }: SidePanelProps) => {
   return (
     <Overlay onClose={onClose}>
       <Wrapper role="dialog" isOpen={isOpen}>
         <header>
           <h2>{title}</h2>
-          <Button onlyIcon onClick={onClose}>
-            ✕
-          </Button>
+          <Button onClick={onClose}>✕</Button>
         </header>
 
         {children}
