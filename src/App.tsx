@@ -8,7 +8,7 @@ import GlobalStyle from './styles/global';
 
 import Home from './pages/Home';
 
-function App() {
+const App = (): JSX.Element => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={colors}>
@@ -17,6 +17,6 @@ function App() {
       </ThemeProvider>
     </Provider>
   );
-}
+};
 
 export default App;

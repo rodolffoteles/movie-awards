@@ -9,7 +9,11 @@ interface SearchBarProps {
   value: string;
 }
 
-const SearchBar = ({ placeholder, onChange, value }: SearchBarProps) => {
+const SearchBar = ({
+  placeholder,
+  onChange,
+  value,
+}: SearchBarProps): JSX.Element => {
   const hangleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     onChange(event.target.value);
 

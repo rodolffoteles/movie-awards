@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import breakpoints from '../../styles/tokens/breakpoints';
 
 export const Wrapper = styled.div<{ isOpen: boolean }>`
   background-color: ${props => props.theme.primaryDark};
@@ -16,7 +15,7 @@ export const Wrapper = styled.div<{ isOpen: boolean }>`
   width: 100%;
   z-index: 3;
 
-  @media ${breakpoints.medium} {
+  @media only screen and (min-width: 768px) {
     width: 24rem;
     transform: ${props =>
       props.isOpen ? 'translateX(0%)' : 'translateX(100%)'};

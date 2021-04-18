@@ -11,4 +11,4 @@ export default {
 
   dangerLight: '#b00001',
   danger: '#890304',
-};
+} as const;

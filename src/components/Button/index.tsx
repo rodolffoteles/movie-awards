@@ -7,7 +7,7 @@ interface ButtonProps {
   onClick(): void;
 }
 
-const Button = ({ onClick, children }: ButtonProps) => {
+const Button = ({ onClick, children }: ButtonProps): JSX.Element => {
   return <Wrapper onClick={onClick}>{children}</Wrapper>;
 };
 

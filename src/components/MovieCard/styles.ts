@@ -14,8 +14,10 @@ export const Wrapper = styled.div`
 export const AddButton = styled.button`
   align-items: center;
   background: ${props => props.theme.primary};
+  border: none;
   border-radius: 0.5rem;
   color: rgba(80, 133, 234, 0.5);
+  cursor: pointer;
   display: flex;
   font-size: 7rem;
   height: 15rem;

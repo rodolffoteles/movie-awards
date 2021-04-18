@@ -12,7 +12,7 @@ interface ModalProps {
   onClose(): void;
 }
 
-const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, children }: ModalProps): JSX.Element => {
   return (
     <Overlay onClose={onClose}>
       <Wrapper isOpen={isOpen}>

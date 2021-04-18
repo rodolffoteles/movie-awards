@@ -7,7 +7,7 @@ interface BackdropProps {
   onClick(): void;
 }
 
-const Backdrop = ({ isOpen, onClick }: BackdropProps) => {
+const Backdrop = ({ isOpen, onClick }: BackdropProps): JSX.Element => {
   return <Wrapper isOpen={isOpen} onClick={onClick} />;
 };
 

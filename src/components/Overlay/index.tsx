@@ -5,7 +5,7 @@ interface OverlayProps {
   onClose(): void;
 }
 
-const Overlay = ({ children, onClose }: OverlayProps) => {
+const Overlay = ({ children, onClose }: OverlayProps): JSX.Element => {
   const handleKeyUp = useCallback(
     event => {
       if (event.key === 'Escape') {

@@ -1,17 +1,18 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import debounce from './middleware/debouce';
-import api from './middleware/api';
-import ranking from './middleware/ranking';
+import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
 const composeEnhancers =
   (process.env.NODE_ENV === 'development' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose;
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(debounce, api, ranking))
+  composeEnhancers(applyMiddleware(thunk))
 );
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export default store;

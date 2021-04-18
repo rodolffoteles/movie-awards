@@ -1,8 +1,9 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { rankMovie, hideSidePanel } from '../../actions';
+import { rankMovie } from '../../actions/ranking';
+import { hideSidePanel } from '../../actions/ui';
 
-import { Movie } from '../../types';
+import type { RootState } from '../../store';
+import type { Movie } from '../../types';
 
 import { Wrapper, MovieListItem } from './styles';
 
@@ -10,18 +11,21 @@ interface MovieListProps {
   movies: Movie[];
 }
 
-const MovieList = ({ movies }: MovieListProps) => {
+const MovieList = ({ movies }: MovieListProps): JSX.Element => {
   const dispatch = useDispatch();
-  const selectedRank = useSelector(state => state.ui.selectedRank);
+  const selectedRank = useSelector((state: RootState) => state.ui.selectedRank);
 
-  const ranking = useSelector(state => state.ranking);
+  const ranking = useSelector((state: RootState) => state.ranking);
 
-  const handleAddMovie = movie => {
-    dispatch(rankMovie(movie, selectedRank));
+  const handleAddMovie = (movie: Movie) => {
+    if (selectedRank) {
+      dispatch(rankMovie(movie, selectedRank));
+    }
+
     dispatch(hideSidePanel());
   };
 
-  const isMovieAlreadySelected = imdbId =>
+  const isMovieAlreadySelected = (imdbId: string) =>
     Object.values(ranking).some(movie => movie.imdbId === imdbId);
 
   return (

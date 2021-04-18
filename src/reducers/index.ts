@@ -3,8 +3,10 @@ import rankingReducer from './ranking';
 import searchReducer from './search';
 import uiReducer from './ui';
 
-export default combineReducers({
+const rootReducer = combineReducers({
   ranking: rankingReducer,
   search: searchReducer,
   ui: uiReducer,
 });
+
+export default rootReducer;

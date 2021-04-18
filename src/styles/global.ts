@@ -16,11 +16,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: linear-gradient(#00081A, #00113A) fixed;
   }
-
-  button {
-    border: none;
-    cursor: pointer;
-  }
 `;
 
 export default GlobalStyle;

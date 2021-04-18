@@ -1,31 +1,43 @@
-import * as ActionTypes from '../actions/types';
+import type { UiAction } from '../actions/ui';
+import {
+  SHOW_SIDE_PANEL,
+  HIDE_SIDE_PANEL,
+  SHOW_MODAL,
+  HIDE_MODAL,
+} from '../constants/actionTypes';
 
-const INITIAL_STATE = {
+interface UiState {
+  sidePanelIsOpen: boolean;
+  modalIsOpen: boolean;
+  selectedRank: number | null;
+}
+
+const INITIAL_STATE: UiState = {
   sidePanelIsOpen: false,
   modalIsOpen: false,
   selectedRank: null,
 };
 
-export default (state = INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE, action: UiAction): UiState => {
   switch (action.type) {
-    case ActionTypes.SHOW_SIDE_PANEL:
+    case SHOW_SIDE_PANEL:
       return {
         ...state,
         sidePanelIsOpen: true,
         selectedRank: action.payload.rank,
       };
-    case ActionTypes.HIDE_SIDE_PANEL:
+    case HIDE_SIDE_PANEL:
       return {
         ...state,
         sidePanelIsOpen: false,
         selectedRank: null,
       };
-    case ActionTypes.SHOW_MODAL:
+    case SHOW_MODAL:
       return {
         ...state,
         modalIsOpen: true,
       };
-    case ActionTypes.HIDE_MODAL:
+    case HIDE_MODAL:
       return {
         ...state,
         modalIsOpen: false,

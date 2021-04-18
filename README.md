@@ -2,6 +2,8 @@
 
 Web app that allow users to rank their favorite movies of all time.
 
+This project was developed in an effort to learn both redux and typescript.
+
 ## Getting Started
 
 ### Prerequisites

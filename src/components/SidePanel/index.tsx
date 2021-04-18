@@ -13,7 +13,12 @@ interface SidePanelProps {
   onClose(): void;
 }
 
-const SidePanel = ({ children, title, isOpen, onClose }: SidePanelProps) => {
+const SidePanel = ({
+  children,
+  title,
+  isOpen,
+  onClose,
+}: SidePanelProps): JSX.Element => {
   return (
     <Overlay onClose={onClose}>
       <Wrapper role="dialog" isOpen={isOpen}>

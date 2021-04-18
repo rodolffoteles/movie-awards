@@ -1,11 +1,8 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  hideSidePanel,
-  hideModal,
-  setSearchTerm,
-  searchMovie,
-} from '../../actions';
+import { hideSidePanel, hideModal } from '../../actions/ui';
+import { setSearchTerm, searchMovie, resetSearch } from '../../actions/search';
+import useDebounce from '../../hooks/useDebounce';
+import { RootState } from '../../store';
 
 import AwardImage from '../../assets/awards.svg';
 import MovieCard from '../../components/MovieCard';
@@ -16,23 +13,35 @@ import SearchResult from '../../components/SearchResult';
 
 import { Wrapper, SearchBarWrapper } from './styles';
 
-const Home = () => {
+const RANKING_POSITIONS = [1, 2, 3, 4, 5];
+const DEBOUNCE_DELAY = 5000;
+
+const Home = (): JSX.Element => {
   const dispatch = useDispatch();
 
-  const { sidePanelIsOpen, modalIsOpen } = useSelector(state => state.ui);
+  const { sidePanelIsOpen, modalIsOpen } = useSelector(
+    (state: RootState) => state.ui
+  );
   const toggleSidePannel = () => dispatch(hideSidePanel());
 
-  const toggleModal = () => dispatch(hideModal());
-
-  const searchTerm = useSelector(state => state.search.searchTerm);
-
-  const handleSearch = searchTerm => {
-    dispatch(setSearchTerm(searchTerm));
-    dispatch(searchMovie(searchTerm));
+  const toggleModal = () => {
+    dispatch(hideModal());
+    dispatch(resetSearch());
   };
 
-  const movies = useSelector(state => state.ranking);
-  const rank = [1, 2, 3, 4, 5];
+  const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
+
+  const debouncedSearchMovie = useDebounce(
+    () => dispatch(searchMovie()),
+    DEBOUNCE_DELAY
+  );
+
+  const handleSearch = (searchTerm: string) => {
+    dispatch(setSearchTerm(searchTerm));
+    debouncedSearchMovie();
+  };
+
+  const movies = useSelector((state: RootState) => state.ranking);
 
   return (
     <>
@@ -41,19 +50,21 @@ const Home = () => {
           <h1>Movie Awards</h1>
         </header>
 
-        <h1>Rank the five best movies you've ever watched</h1>
+        <h1>Rank the five best movies you&apos;ve ever watched</h1>
         <section>
-          {rank.map(number => (
+          {RANKING_POSITIONS.map(number => (
             <MovieCard key={number} rank={number} movie={movies[number]} />
           ))}
         </section>
       </Wrapper>
 
       <Modal isOpen={modalIsOpen} onClose={toggleModal}>
-        <img src={AwardImage} alt="Man and Woman dressed up holding an award" />
+        <img src={AwardImage} alt="Man and woman dressed up holding an award" />
         <h1>Great!</h1>
-        <p>You completed your ranking.</p>
-        <p>These are indeed really good movies.</p>
+        <p>
+          You completed your ranking. <br />
+          These are indeed really good movies.
+        </p>
       </Modal>
 
       <SidePanel
@@ -65,7 +76,7 @@ const Home = () => {
           <SearchBar
             placeholder="Movie title"
             value={searchTerm}
-            onChangeText={handleSearch}
+            onChange={handleSearch}
           />
         </SearchBarWrapper>
 

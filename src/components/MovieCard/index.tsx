@@ -1,8 +1,8 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
-import { unrankMovie, showSidePanel } from '../../actions';
+import { unrankMovie } from '../../actions/ranking';
+import { showSidePanel } from '../../actions/ui';
 
-import { Movie } from '../../types';
+import type { Movie } from '../../types';
 import { Wrapper, DeleteButton, AddButton, Description } from './styles';
 
 interface MovieCardProps {
@@ -10,7 +10,7 @@ interface MovieCardProps {
   movie: Movie;
 }
 
-const MovieCard = ({ rank, movie }: MovieCardProps) => {
+const MovieCard = ({ rank, movie }: MovieCardProps): JSX.Element => {
   const dispatch = useDispatch();
   const handleRemoveMovie = () => dispatch(unrankMovie(rank));
   const handleAddMovie = () => dispatch(showSidePanel(rank));
