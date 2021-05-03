@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div<{ isOpen: boolean }>`
   background: #fff;
   border-radius: 0.5rem;
-  color: #000;
+  color: ${props => props.theme.colors.black};
   left: 50%;
   max-width: 500px;
   padding: 3rem;

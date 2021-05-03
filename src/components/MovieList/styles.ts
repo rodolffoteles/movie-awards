@@ -12,7 +12,7 @@ export const MovieListItem = styled.li`
   text-decoration: none;
 
   &:hover {
-    background: ${props => props.theme.primary};
+    background: ${props => props.theme.colors.primary};
   }
 
   img {
@@ -24,9 +24,9 @@ export const MovieListItem = styled.li`
   button {
     align-self: center;
     background: transparent;
-    border: 2px solid ${props => props.theme.textLight};
+    border: 2px solid #ffffff;
     border-radius: 100%;
-    cursor: auto;
+    cursor: pointer;
     font-size: 1.5rem;
     font-weight: 700;
     height: 2.5rem;
@@ -39,8 +39,8 @@ export const MovieListItem = styled.li`
     }
 
     &:hover:enabled {
-      background: ${props => props.theme.textLight};
-      color: ${props => props.theme.primary};
+      background: ${props => props.theme.colors.text};
+      color: ${props => props.theme.colors.primary.darker};
     }
   }
 `;

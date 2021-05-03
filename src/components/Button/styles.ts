@@ -12,6 +12,6 @@ export const Wrapper = styled.button`
   transition: background 0.2s ease-out;
 
   &:focus {
-    background: ${props => props.theme.primaryLighter};
+    background: ${props => props.theme.colors.primary.default};
   }
 `;

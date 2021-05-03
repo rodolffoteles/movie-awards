@@ -14,7 +14,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: linear-gradient(#00081A, #00113A) fixed;
+    background: linear-gradient(
+      ${props => props.theme.colors.primary.darkest},
+      ${props => props.theme.colors.primary.darker}
+      ) fixed;
   }
 `;
 

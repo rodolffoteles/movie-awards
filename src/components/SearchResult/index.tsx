@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
 import MovieList from '../MovieList';
-import Loading from '../Loading';
+import Spinner from '../Spinner';
 
 import { Wrapper, Alert } from './styles';
 
@@ -12,7 +12,7 @@ const SearchResult = (): JSX.Element => {
     (state: RootState) => state.search
   );
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Spinner />;
 
   if (error && error.status == 404) {
     return (
@@ -24,7 +24,19 @@ const SearchResult = (): JSX.Element => {
     );
   }
 
-  if (error) return <Alert role="alert">Something went wrong.</Alert>;
+  if (error && error.status == 404) {
+    return (
+      <Alert role="alert">
+        <h3>Too many results for &quot;{searchTerm}&quot;</h3>
+        There are too many results for this search. Try again with more specific
+        keywords.
+      </Alert>
+    );
+  }
+
+  if (error) {
+    return <Alert role="alert">Something went wrong.</Alert>;
+  }
 
   return (
     <>

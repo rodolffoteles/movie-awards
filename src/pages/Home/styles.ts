@@ -8,11 +8,19 @@ export const Wrapper = styled.div`
 
   > header {
     display: flex;
+    align-items: center;
     padding: 2rem;
     width: 100%;
+    line-height: 1.5rem;
+
+    svg {
+      fill: ${props => props.theme.colors.secondary};
+      margin-right: 1rem;
+      max-height: 4rem;
+    }
   }
 
-  > h1 {
+  > h2 {
     text-align: center;
   }
 

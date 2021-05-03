@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div<{ isOpen: boolean }>`
-  background-color: ${props => props.theme.primaryDark};
+  background-color: ${props => props.theme.colors.primary.darker};
   bottom: 0;
   box-shadow: 0 31px 41px 0 rgba(0, 0, 0, 0.5);
   display: flex;

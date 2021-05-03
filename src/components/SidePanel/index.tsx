@@ -7,9 +7,13 @@ import Backdrop from '../Backdrop';
 import { Wrapper } from './styles';
 
 interface SidePanelProps {
+  /** The content to display inside panel */
   children: React.ReactNode;
+  /** The content to display inside panel */
   title: string;
+  /** Whether or not the panel is open */
   isOpen: boolean;
+  /** Callback when the panel is closed */
   onClose(): void;
 }
 

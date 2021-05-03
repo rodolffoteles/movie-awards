@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 export const Alert = styled.div`

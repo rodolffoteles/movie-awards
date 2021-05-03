@@ -4,9 +4,12 @@ import { ReactComponent as MagnifierIcon } from '../../assets/magnifier.svg';
 import { Wrapper } from './styles';
 
 interface SearchBarProps {
+  /** Hint text to display */
   placeholder: string;
-  onChange(value: string): void;
+  /** Initial value for the input */
   value: string;
+  /** Callback when value is changed */
+  onChange(value: string): void;
 }
 
 const SearchBar = ({

@@ -2,19 +2,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hideSidePanel, hideModal } from '../../actions/ui';
 import { setSearchTerm, searchMovie, resetSearch } from '../../actions/search';
 import useDebounce from '../../hooks/useDebounce';
-import { RootState } from '../../store';
+import type { RootState } from '../../store';
 
 import AwardImage from '../../assets/awards.svg';
-import MovieCard from '../../components/MovieCard';
-import SidePanel from '../../components/SidePanel';
+import { ReactComponent as OscarIcon } from '../../assets/oscars.svg';
+
 import Modal from '../../components/Modal';
+import MovieCard from '../../components/MovieCard';
 import SearchBar from '../../components/SearchBar';
 import SearchResult from '../../components/SearchResult';
+import SidePanel from '../../components/SidePanel';
 
 import { Wrapper, SearchBarWrapper } from './styles';
 
 const RANKING_POSITIONS = [1, 2, 3, 4, 5];
-const DEBOUNCE_DELAY = 5000;
+const DEBOUNCE_DELAY = 50;
 
 const Home = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -47,10 +49,15 @@ const Home = (): JSX.Element => {
     <>
       <Wrapper>
         <header>
-          <h1>Movie Awards</h1>
+          <OscarIcon />
+          <h1>
+            Movie
+            <br />
+            Awards
+          </h1>
         </header>
 
-        <h1>Rank the five best movies you&apos;ve ever watched</h1>
+        <h2>Rank the five best movies you&apos;ve ever watched</h2>
         <section>
           {RANKING_POSITIONS.map(number => (
             <MovieCard key={number} rank={number} movie={movies[number]} />
@@ -62,7 +69,8 @@ const Home = (): JSX.Element => {
         <img src={AwardImage} alt="Man and woman dressed up holding an award" />
         <h1>Great!</h1>
         <p>
-          You completed your ranking. <br />
+          You completed your ranking.
+          <br />
           These are indeed really good movies.
         </p>
       </Modal>

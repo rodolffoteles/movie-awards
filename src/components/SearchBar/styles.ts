@@ -14,19 +14,19 @@ export const Wrapper = styled.div`
   }
 
   input {
-    background: ${props => props.theme.primary};
-    border: 2px solid ${props => props.theme.primary};
+    background: ${props => props.theme.colors.primary.default};
+    border: 2px solid ${props => props.theme.colors.primary.default};
     border-radius: 1rem;
     font-weight: 500;
     padding: 0.5rem 1rem 0.5rem 3rem;
     width: 100%;
 
     &:focus {
-      border-color: ${props => props.theme.secondary};
+      border-color: ${props => props.theme.colors.secondary.default};
     }
 
     &:focus + svg {
-      fill: ${props => props.theme.secondary};
+      fill: ${props => props.theme.colors.secondary.default};
     }
   }
 `;
