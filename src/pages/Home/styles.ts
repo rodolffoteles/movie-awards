@@ -7,11 +7,11 @@ export const Wrapper = styled.div`
   justify-content: center;
 
   > header {
-    display: flex;
     align-items: center;
-    padding: 2rem;
+    display: flex;
+    line-height: 2rem;
+    padding: 2rem 10vw;
     width: 100%;
-    line-height: 1.5rem;
 
     svg {
       fill: ${props => props.theme.colors.secondary};

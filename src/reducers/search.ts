@@ -10,14 +10,13 @@ import {
 
 interface SearchState {
   isLoading: boolean;
-  error: { status: number; message: string } | null;
+  error?: { code?: number; message: string };
   searchTerm: string;
   searchResult: Movie[];
 }
 
 const INITIAL_STATE: SearchState = {
   isLoading: false,
-  error: null,
   searchTerm: '',
   searchResult: [],
 };
@@ -39,7 +38,7 @@ export default (state = INITIAL_STATE, action: SearchAction): SearchState => {
       return {
         ...state,
         isLoading: false,
-        error: null,
+        error: undefined,
         searchResult: action.payload.movies,
       };
     case RESET_SEARCH:

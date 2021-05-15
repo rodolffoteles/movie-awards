@@ -2,7 +2,7 @@ import type { Movie } from '../types';
 import type { RootState } from '../store';
 import type { ThunkAction } from 'redux-thunk';
 import * as ActionTypes from '../constants/actionTypes';
-import { searchMovie as searchMovieApi } from '../services/search';
+import { fetchMovies } from '../services/search';
 
 export interface SearchMovieRequestAction {
   type: typeof ActionTypes.SEARCH_MOVIE_REQUEST;
@@ -15,7 +15,7 @@ export interface SearchMovieSuccessAction {
 
 export interface SearchMovieErrorAction {
   type: typeof ActionTypes.SEARCH_MOVIE_ERROR;
-  payload: { error: { status: number; message: string } };
+  payload: { error: { code?: number; message: string } };
 }
 
 export interface SetSearchTermAction {
@@ -61,10 +61,10 @@ export const searchMovie = (): ThunkAction<
   dispatch(searchMovieRequest());
 
   const { search: searchState } = getState();
-  const response = await searchMovieApi(searchState.searchTerm);
+  const response = await fetchMovies(searchState.searchTerm);
 
   if (response.status == 'error') {
-    dispatch(searchMovieError(response.data.error));
+    dispatch(searchMovieError(response.error));
   }
 
   if (response.status == 'success') {
