@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as MagnifierIcon } from '../../assets/magnifier.svg';
+import { ReactComponent as MagnifierIcon } from '../../assets/svg/magnifier.svg';
 
 import { Wrapper } from './styles';
 

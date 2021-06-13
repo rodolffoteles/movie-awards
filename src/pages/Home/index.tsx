@@ -4,8 +4,8 @@ import { setSearchTerm, searchMovie, resetSearch } from '../../actions/search';
 import useDebounce from '../../hooks/useDebounce';
 import type { RootState } from '../../store';
 
-import AwardImage from '../../assets/awards.svg';
-import { ReactComponent as OscarIcon } from '../../assets/oscars.svg';
+import AwardImage from '../../assets/svg/awards.svg';
+import { ReactComponent as OscarTrophyIcon } from '../../assets/svg/oscarTrophy.svg';
 
 import Modal from '../../components/Modal';
 import MovieCard from '../../components/MovieCard';
@@ -54,7 +54,7 @@ const Home = (): JSX.Element => {
     <>
       <Wrapper>
         <header>
-          <OscarIcon />
+          <OscarTrophyIcon />
           <h1>
             Movie
             <br />

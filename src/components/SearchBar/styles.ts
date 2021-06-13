@@ -17,6 +17,10 @@ export const Wrapper = styled.div`
     background: ${props => props.theme.colors.primary.default};
     border: 2px solid transparent;
     border-radius: 1rem;
+    outline: none;
+    box-shadow: none;
+    border-color: transparent;
+
     font-size: inherit;
     font-weight: 500;
     padding: 0.5rem 1rem 0.5rem 3rem;
