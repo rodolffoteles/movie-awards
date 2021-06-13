@@ -38,7 +38,9 @@ export const AddButton = styled.button`
 
 export const DeleteButton = styled.button`
   background: ${props => props.theme.colors.danger.default};
+  border: none;
   border-radius: 50%;
+  cursor: pointer;
   font-size: 1.5rem;
   font-weight: bold;
   height: 2rem;
@@ -62,9 +64,9 @@ export const Description = styled.div`
 export const RankingNumber = styled.div`
   color: ${props => props.theme.colors.secondary.default};
   font-size: 7rem;
-  position: absolute;
   font-weight: 600;
-  width: 100%;
+  position: absolute;
   pointer-events: none;
   top: -5rem;
+  width: 100%;
 `;

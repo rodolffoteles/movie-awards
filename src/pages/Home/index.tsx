@@ -24,11 +24,14 @@ const Home = (): JSX.Element => {
   const { sidePanelIsOpen, modalIsOpen } = useSelector(
     (state: RootState) => state.ui
   );
-  const toggleSidePannel = () => dispatch(hideSidePanel());
+
+  const toggleSidePannel = () => {
+    dispatch(hideSidePanel());
+    dispatch(resetSearch());
+  };
 
   const toggleModal = () => {
     dispatch(hideModal());
-    dispatch(resetSearch());
   };
 
   const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
@@ -39,8 +42,10 @@ const Home = (): JSX.Element => {
   );
 
   const handleSearch = (searchTerm: string) => {
-    dispatch(setSearchTerm(searchTerm));
-    debouncedSearchMovie();
+    if (searchTerm !== '') {
+      dispatch(setSearchTerm(searchTerm));
+      debouncedSearchMovie();
+    }
   };
 
   const movies = useSelector((state: RootState) => state.ranking);

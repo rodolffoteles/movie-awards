@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
     width: 100%;
 
     svg {
+      flex-shrink: 0;
       fill: ${props => props.theme.colors.secondary};
       margin-right: 1rem;
       max-height: 4rem;

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { rankMovie } from '../../actions/ranking';
+import { resetSearch } from '../../actions/search';
 import { hideSidePanel } from '../../actions/ui';
 
 import type { RootState } from '../../store';
@@ -23,6 +24,7 @@ const MovieList = ({ movies }: MovieListProps): JSX.Element => {
     }
 
     dispatch(hideSidePanel());
+    dispatch(resetSearch());
   };
 
   const isMovieAlreadySelected = (imdbId: string) =>
@@ -30,8 +32,8 @@ const MovieList = ({ movies }: MovieListProps): JSX.Element => {
 
   return (
     <Wrapper>
-      {movies.map(movie => (
-        <MovieListItem key={movie.imdbId}>
+      {movies.map((movie, index) => (
+        <MovieListItem key={index}>
           <img src={movie.poster} alt={`${movie.title} poster`} />
           <div>
             <h3>{movie.title}</h3>

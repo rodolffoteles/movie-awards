@@ -24,15 +24,4 @@ export const Wrapper = styled.div<{ isOpen: boolean }>`
   h1 {
     margin-bottom: 0.5rem;
   }
-
-  button {
-    float: right;
-    margin: -2rem;
-  }
-
-  img {
-    margin-bottom: 2rem;
-    max-width: 15rem;
-    width: 100%;
-  }
 `;

@@ -15,8 +15,9 @@ export const Wrapper = styled.div`
 
   input {
     background: ${props => props.theme.colors.primary.default};
-    border: 2px solid ${props => props.theme.colors.primary.default};
+    border: 2px solid transparent;
     border-radius: 1rem;
+    font-size: inherit;
     font-weight: 500;
     padding: 0.5rem 1rem 0.5rem 3rem;
     width: 100%;

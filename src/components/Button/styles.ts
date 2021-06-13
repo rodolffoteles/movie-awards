@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.button`
   background: transparent;
   border: none;
-  border-radius: 50%;
+  border-radius: 999em;
   cursor: pointer;
   display: flex;
   font-size: 1.5rem;
