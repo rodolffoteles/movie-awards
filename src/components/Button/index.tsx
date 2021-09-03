@@ -1,10 +1,10 @@
-import React from 'react';
-
 import { Wrapper } from './styles';
 
 interface ButtonProps {
-  children: string;
-  onClick(): void;
+  /** The content to display inside the button */
+  children?: string;
+  /** Callback when clicked */
+  onClick?(): void;
 }
 
 const Button = ({ onClick, children }: ButtonProps): JSX.Element => {

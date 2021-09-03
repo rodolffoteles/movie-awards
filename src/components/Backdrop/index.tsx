@@ -1,9 +1,9 @@
-import React from 'react';
-
 import { Wrapper } from './styles';
 
 interface BackdropProps {
+  /** Whether the backdrop is open or not */
   isOpen: boolean;
+  /** Callback when clicked */
   onClick(): void;
 }
 

@@ -9,6 +9,7 @@ import type { Movie } from '../../types';
 import { Wrapper, MovieListItem } from './styles';
 
 interface MovieListProps {
+  /** List of movies to be displayed */
   movies: Movie[];
 }
 

@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
 
 interface OverlayProps {
+  /** The content to display inside the overlay */
   children: React.ReactNode;
+  /** Callback when the overlay is closed */
   onClose(): void;
 }
 
