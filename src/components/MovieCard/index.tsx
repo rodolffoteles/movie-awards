@@ -1,7 +1,3 @@
-import { useDispatch } from 'react-redux';
-import { unrankMovie } from '../../actions/ranking';
-import { showSidePanel } from '../../actions/ui';
-
 import type { Movie } from '../../types';
 import {
   Wrapper,
@@ -16,24 +12,33 @@ interface MovieCardProps {
   rank: number;
   /** Selected movie */
   movie?: Movie;
+  /** Callback when adding new movie */
+  onAdd?(): void;
+  /** Callback when removing the movie */
+  onRemove?(): void;
 }
 
-const MovieCard = ({ rank, movie }: MovieCardProps): JSX.Element => {
-  const dispatch = useDispatch();
-  const handleRemoveMovie = () => dispatch(unrankMovie(rank));
-  const handleAddMovie = () => dispatch(showSidePanel(rank));
+const MovieCard = ({
+  rank,
+  movie,
+  onAdd,
+  onRemove,
+}: MovieCardProps): JSX.Element => {
+  const handleRemoveMovie = () => onRemove?.();
+  const handleAddMovie = () => onAdd?.();
+
+  const moviePosterMarkuṕ = movie ? (
+    <>
+      <DeleteButton onClick={handleRemoveMovie}>&times;</DeleteButton>
+      <img src={movie.poster} alt={movie.title} />
+    </>
+  ) : (
+    <AddButton onClick={handleAddMovie}>+</AddButton>
+  );
 
   return (
     <Wrapper>
-      {movie ? (
-        <>
-          <DeleteButton onClick={handleRemoveMovie}>&times;</DeleteButton>
-          <img src={movie.poster} alt={movie.title} />
-        </>
-      ) : (
-        <AddButton onClick={handleAddMovie}>+</AddButton>
-      )}
-
+      {moviePosterMarkuṕ}
       <Description>
         <RankingNumber>{rank}</RankingNumber>
         {movie?.title}

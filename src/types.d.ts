@@ -5,3 +5,7 @@ export type Movie = {
   year: string;
   actors: string;
 };
+
+export interface Ranking {
+  [rank: number]: Movie;
+}

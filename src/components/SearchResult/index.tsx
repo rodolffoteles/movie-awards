@@ -1,17 +1,26 @@
-import { useSelector } from 'react-redux';
-
-import { RootState } from '../../store';
-
 import MovieList from '../MovieList';
 import Spinner from '../Spinner';
 
+import type { Movie, Ranking } from '../../types';
 import { Wrapper, Alert } from './styles';
 
-const SearchResult = (): JSX.Element => {
-  const { isLoading, error, searchResult, searchTerm } = useSelector(
-    (state: RootState) => state.search
-  );
+interface SearchResultProps {
+  searchResult: Movie[];
+  isLoading: boolean;
+  searchTerm: string;
+  error?: { code?: number };
+  onAdd?(movie: Movie): void;
+  ranking: Ranking;
+}
 
+const SearchResult = ({
+  isLoading,
+  error,
+  searchResult,
+  searchTerm,
+  ranking,
+  onAdd,
+}: SearchResultProps): JSX.Element => {
   if (isLoading) return <Spinner />;
 
   if (error) {
@@ -39,7 +48,7 @@ const SearchResult = (): JSX.Element => {
 
   return (
     <Wrapper>
-      <MovieList movies={searchResult} />
+      <MovieList movies={searchResult} ranking={ranking} onAdd={onAdd} />
     </Wrapper>
   );
 };

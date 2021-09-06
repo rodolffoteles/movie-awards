@@ -1,31 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { rankMovie } from '../../actions/ranking';
-import { resetSearch } from '../../actions/search';
-import { hideSidePanel } from '../../actions/ui';
-
-import type { RootState } from '../../store';
-import type { Movie } from '../../types';
+import type { Movie, Ranking } from '../../types';
 
 import { Wrapper, MovieListItem } from './styles';
 
 interface MovieListProps {
   /** List of movies to be displayed */
   movies: Movie[];
+  /**  */
+  onAdd?(movie: Movie): void;
+
+  ranking: Ranking;
 }
 
-const MovieList = ({ movies }: MovieListProps): JSX.Element => {
-  const dispatch = useDispatch();
-  const selectedRank = useSelector((state: RootState) => state.ui.selectedRank);
-
-  const ranking = useSelector((state: RootState) => state.ranking);
-
+const MovieList = ({ movies, onAdd, ranking }: MovieListProps): JSX.Element => {
   const handleAddMovie = (movie: Movie) => {
-    if (selectedRank) {
-      dispatch(rankMovie(movie, selectedRank));
-    }
-
-    dispatch(hideSidePanel());
-    dispatch(resetSearch());
+    onAdd?.(movie);
   };
 
   const isMovieAlreadySelected = (imdbId: string) =>

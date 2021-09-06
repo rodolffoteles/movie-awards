@@ -1,6 +1,8 @@
 import type { Movie } from '../types';
 import api from './api';
 
+export const MOVIE_PER_PAGE = 10;
+
 interface ApiErrorResponse {
   response: 'False';
   error: string;
@@ -46,7 +48,7 @@ export const fetchMovies = async (
     const movies = response.data.search;
     const totalCount = parseInt(response.data.totalResults);
     return { status: 'success', data: { movies, totalCount } };
-  } catch (error) {
+  } catch (error: any) {
     return {
       status: 'error',
       error: { code: error.status, message: error.message },

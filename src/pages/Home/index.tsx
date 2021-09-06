@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { hideSidePanel, hideModal } from '../../actions/ui';
-import { setSearchTerm, searchMovie, resetSearch } from '../../actions/search';
+import { useState } from 'react';
 import useDebounce from '../../hooks/useDebounce';
-import type { RootState } from '../../store';
+import useRanking from '../../hooks/useRanking';
+import useSearch from '../../hooks/useSearch';
 
 import AwardImage from '../../assets/svg/awards.svg';
 import { ReactComponent as OscarTrophyIcon } from '../../assets/svg/oscarTrophy.svg';
@@ -14,41 +13,46 @@ import SearchResult from '../../components/SearchResult';
 import SidePanel from '../../components/SidePanel';
 
 import { Wrapper, SearchBarWrapper } from './styles';
+import { useEffect } from 'react';
 
 const RANKING_POSITIONS = [1, 2, 3, 4, 5];
 const DEBOUNCE_DELAY = 50;
 
 const Home = (): JSX.Element => {
-  const dispatch = useDispatch();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [sidePanelIsOpen, setSidePanelIsOpen] = useState(false);
 
-  const { sidePanelIsOpen, modalIsOpen } = useSelector(
-    (state: RootState) => state.ui
-  );
+  const [searchTerm, setSearchterm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, DEBOUNCE_DELAY);
+
+  const { search, ...searchState } = useSearch();
+
+  const [currentSelectedRank, setCurrentSelectedRank] = useState<number>();
+
+  const { ranking } = useRanking();
+  const movies = Object.values(ranking);
+
+  const handleAddMovie = (rank: number) => {
+    setCurrentSelectedRank(rank);
+    toggleSidePannel();
+  };
 
   const toggleSidePannel = () => {
-    dispatch(hideSidePanel());
-    dispatch(resetSearch());
+    setSidePanelIsOpen(prev => !prev);
+    setSearchterm('');
   };
 
   const toggleModal = () => {
-    dispatch(hideModal());
+    setModalIsOpen(prev => !prev);
   };
-
-  const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
-
-  const debouncedSearchMovie = useDebounce(
-    () => dispatch(searchMovie()),
-    DEBOUNCE_DELAY
-  );
 
   const handleSearch = (searchTerm: string) => {
-    if (searchTerm !== '') {
-      dispatch(setSearchTerm(searchTerm));
-      debouncedSearchMovie();
-    }
+    setSearchterm(searchTerm);
   };
 
-  const movies = useSelector((state: RootState) => state.ranking);
+  useEffect(() => {
+    search(debouncedSearchTerm);
+  }, [debouncedSearchTerm]);
 
   return (
     <>
@@ -56,16 +60,19 @@ const Home = (): JSX.Element => {
         <header>
           <OscarTrophyIcon />
           <h1>
-            Movie
-            <br />
-            Awards
+            Movie <br /> Awards
           </h1>
         </header>
 
         <h2>Rank the five best movies you&apos;ve ever watched</h2>
         <section>
           {RANKING_POSITIONS.map(number => (
-            <MovieCard key={number} rank={number} movie={movies[number]} />
+            <MovieCard
+              key={number}
+              rank={number}
+              movie={movies[number]}
+              onAdd={() => handleAddMovie(number)}
+            />
           ))}
         </section>
       </Wrapper>
@@ -93,7 +100,13 @@ const Home = (): JSX.Element => {
           />
         </SearchBarWrapper>
 
-        <SearchResult />
+        <SearchResult
+          isLoading={searchState.isLoading}
+          searchResult={searchState.movies}
+          ranking={ranking}
+          error={searchState.error}
+          searchTerm={debouncedSearchTerm}
+        />
       </SidePanel>
     </>
   );
