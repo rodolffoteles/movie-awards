@@ -5,20 +5,20 @@ import { Wrapper } from './styles';
 
 interface SearchBarProps {
   /** Hint text to display */
-  placeholder: string;
+  placeholder?: string;
   /** Initial value for the input */
-  value: string;
+  value?: string;
   /** Callback when value is changed */
-  onChange(value: string): void;
+  onChange?(value: string): void;
 }
 
 const SearchBar = ({
   placeholder,
   onChange,
-  value,
+  value = '',
 }: SearchBarProps): JSX.Element => {
   const hangleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    onChange(event.target.value);
+    onChange?.(event.target.value);
 
   return (
     <Wrapper>

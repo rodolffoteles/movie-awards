@@ -10,28 +10,34 @@ interface SearchState {
   totalPages?: number;
 }
 
-export interface SearchMovieRequestAction {
+interface SearchMovieRequestAction {
   type: typeof SEARCH_MOVIE_REQUEST;
 }
 
-export interface SearchMovieSuccessAction {
+interface SearchMovieSuccessAction {
   type: typeof SEARCH_MOVIE_SUCCESS;
   payload: Pick<SearchState, 'movies' | 'currentPage' | 'totalPages'>;
 }
 
-export interface SearchMovieErrorAction {
+interface SearchMovieErrorAction {
   type: typeof SEARCH_MOVIE_ERROR;
   payload: Pick<SearchState, 'error'>;
 }
 
-export type SearchAction =
+interface ClearSearchAction {
+  type: typeof CLEAR_SEARCH;
+}
+
+type SearchAction =
   | SearchMovieRequestAction
   | SearchMovieSuccessAction
-  | SearchMovieErrorAction;
+  | SearchMovieErrorAction
+  | ClearSearchAction;
 
 const SEARCH_MOVIE_REQUEST = 'SEARCH_MOVIE_REQUEST';
 const SEARCH_MOVIE_SUCCESS = 'SEARCH_MOVIE_SUCCESS';
 const SEARCH_MOVIE_ERROR = 'SEARCH_MOVIE_ERROR';
+const CLEAR_SEARCH = 'CLEAR_SEARCH';
 
 const INITIAL_STATE: SearchState = {
   isLoading: false,
@@ -58,6 +64,8 @@ const searchReducer = (
         error: undefined,
         movies: action.payload.movies,
       };
+    case CLEAR_SEARCH:
+      return INITIAL_STATE;
     default:
       return state;
   }
@@ -89,7 +97,11 @@ const useSearch = () => {
     }
   };
 
-  return { ...state, search };
+  const clearSearch = () => {
+    dispatch({ type: CLEAR_SEARCH });
+  };
+
+  return { ...state, search, clearSearch };
 };
 
 export default useSearch;

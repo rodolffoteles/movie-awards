@@ -7,18 +7,18 @@ interface Ranking {
 
 interface UseRanking {
   ranking: Ranking;
-  addMovie(rank: number, movie: Movie): void;
-  removeMovie(rank: number): void;
+  rankMovie(rank: number, movie: Movie): void;
+  unrankMovie(rank: number): void;
 }
 
 const useRanking = (): UseRanking => {
   const [ranking, setRanking] = useState<Ranking>({});
 
-  const addMovie = (rank: number, movie: Movie) => {
+  const rankMovie = (rank: number, movie: Movie) => {
     setRanking(prevRanking => ({ ...prevRanking, [rank]: movie }));
   };
 
-  const removeMovie = (rank: number) => {
+  const unrankMovie = (rank: number) => {
     setRanking(prevRanking => {
       const { [rank]: _, ...rest } = prevRanking;
       return rest;
@@ -27,8 +27,8 @@ const useRanking = (): UseRanking => {
 
   return {
     ranking,
-    addMovie,
-    removeMovie,
+    rankMovie,
+    unrankMovie,
   };
 };
 

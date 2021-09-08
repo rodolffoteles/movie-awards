@@ -7,7 +7,7 @@ import { Wrapper, Alert } from './styles';
 interface SearchResultProps {
   searchResult: Movie[];
   isLoading: boolean;
-  searchTerm: string;
+  searchTerm?: string;
   error?: { code?: number };
   onAdd?(movie: Movie): void;
   ranking: Ranking;

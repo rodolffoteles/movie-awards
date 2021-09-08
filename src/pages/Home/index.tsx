@@ -14,32 +14,40 @@ import SidePanel from '../../components/SidePanel';
 
 import { Wrapper, SearchBarWrapper } from './styles';
 import { useEffect } from 'react';
+import { Movie } from '../../types';
 
 const RANKING_POSITIONS = [1, 2, 3, 4, 5];
-const DEBOUNCE_DELAY = 50;
+const DEBOUNCE_DELAY = 100;
 
 const Home = (): JSX.Element => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [sidePanelIsOpen, setSidePanelIsOpen] = useState(false);
 
-  const [searchTerm, setSearchterm] = useState('');
+  const [searchTerm, setSearchTerm] = useState<string>();
   const debouncedSearchTerm = useDebounce(searchTerm, DEBOUNCE_DELAY);
-
-  const { search, ...searchState } = useSearch();
 
   const [currentSelectedRank, setCurrentSelectedRank] = useState<number>();
 
-  const { ranking } = useRanking();
-  const movies = Object.values(ranking);
+  const { search, clearSearch, ...searchState } = useSearch();
 
-  const handleAddMovie = (rank: number) => {
+  const { ranking, rankMovie, unrankMovie } = useRanking();
+
+  const handleChooseMovie = (rank: number) => {
     setCurrentSelectedRank(rank);
     toggleSidePannel();
   };
 
+  const handleAddMovie = (movie: Movie) => {
+    if (currentSelectedRank) {
+      rankMovie(currentSelectedRank, movie);
+      toggleSidePannel();
+    }
+  };
+
   const toggleSidePannel = () => {
     setSidePanelIsOpen(prev => !prev);
-    setSearchterm('');
+    clearSearch();
+    setSearchTerm(undefined);
   };
 
   const toggleModal = () => {
@@ -47,11 +55,13 @@ const Home = (): JSX.Element => {
   };
 
   const handleSearch = (searchTerm: string) => {
-    setSearchterm(searchTerm);
+    setSearchTerm(searchTerm);
   };
 
   useEffect(() => {
-    search(debouncedSearchTerm);
+    if (debouncedSearchTerm) {
+      search(debouncedSearchTerm);
+    }
   }, [debouncedSearchTerm]);
 
   return (
@@ -70,8 +80,9 @@ const Home = (): JSX.Element => {
             <MovieCard
               key={number}
               rank={number}
-              movie={movies[number]}
-              onAdd={() => handleAddMovie(number)}
+              movie={ranking[number]}
+              onAdd={() => handleChooseMovie(number)}
+              onRemove={() => unrankMovie(number)}
             />
           ))}
         </section>
@@ -81,9 +92,8 @@ const Home = (): JSX.Element => {
         <img src={AwardImage} alt="Man and woman dressed up holding an award" />
         <h1>Great!</h1>
         <p>
-          You completed your ranking.
-          <br />
-          These are indeed really good movies.
+          You completed your ranking. <br /> These are indeed really good
+          movies.
         </p>
       </Modal>
 
@@ -106,6 +116,7 @@ const Home = (): JSX.Element => {
           ranking={ranking}
           error={searchState.error}
           searchTerm={debouncedSearchTerm}
+          onAdd={handleAddMovie}
         />
       </SidePanel>
     </>
