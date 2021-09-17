@@ -48,6 +48,8 @@ export const fetchMovies = async (
     const movies = response.data.search;
     const totalCount = parseInt(response.data.totalResults);
     return { status: 'success', data: { movies, totalCount } };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     return {
       status: 'error',

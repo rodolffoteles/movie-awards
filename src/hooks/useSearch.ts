@@ -10,6 +10,11 @@ interface SearchState {
   totalPages?: number;
 }
 
+type UseSearch = SearchState & {
+  search(searchTerm: string): void;
+  clearSearch(): void;
+};
+
 interface SearchMovieRequestAction {
   type: typeof SEARCH_MOVIE_REQUEST;
 }
@@ -71,7 +76,7 @@ const searchReducer = (
   }
 };
 
-const useSearch = () => {
+const useSearch = (): UseSearch => {
   const [state, dispatch] = useReducer(searchReducer, INITIAL_STATE);
 
   const search = async (searchTerm: string) => {
@@ -92,6 +97,8 @@ const useSearch = () => {
         type: SEARCH_MOVIE_SUCCESS,
         payload: { movies, currentPage: 1, totalPages },
       });
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       dispatch({ type: SEARCH_MOVIE_ERROR, payload: error });
     }
