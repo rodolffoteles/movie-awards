@@ -1,8 +1,11 @@
-import Overlay from '../Overlay';
+import { useRef } from 'react';
+import { Transition } from 'react-transition-group';
+
+import KeypressListener from '../KeypressListener';
 import Button from '../Button';
 import Backdrop from '../Backdrop';
 
-import { Wrapper } from './styles';
+import { Overlay, ANIMATION_DURATION } from './styles';
 
 interface ModalProps {
   /** The content to display inside the modal */
@@ -14,15 +17,22 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, children }: ModalProps): JSX.Element => {
-  return (
-    <Overlay onClose={onClose}>
-      <Wrapper isOpen={isOpen}>
-        <Button onClick={onClose}>✕</Button>
-        {children}
-      </Wrapper>
+  const wrapperRef = useRef(null);
 
-      <Backdrop isOpen={isOpen} onClick={onClose} />
-    </Overlay>
+  return (
+    <Transition in={isOpen} timeout={ANIMATION_DURATION} unmountOnExit>
+      {state => (
+        <div ref={wrapperRef}>
+          <Overlay isOpen={state == 'entered'}>
+            <Button onClick={onClose}>✕</Button>
+            {children}
+          </Overlay>
+
+          <Backdrop isOpen={state == 'entered'} onClick={onClose} />
+          <KeypressListener keyName="Escape" handler={onClose} />
+        </div>
+      )}
+    </Transition>
   );
 };
 

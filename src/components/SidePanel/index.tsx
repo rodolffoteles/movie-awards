@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { Transition } from 'react-transition-group';
 
-import Overlay from '../Overlay';
+import KeypressListener from '../KeypressListener';
 import Button from '../Button';
 import Backdrop from '../Backdrop';
 
-import { Wrapper } from './styles';
+import { Overlay, ANIMATION_DURATION } from './styles';
 
 interface SidePanelProps {
   /** The content to display inside panel */
@@ -23,19 +24,31 @@ const SidePanel = ({
   isOpen,
   onClose,
 }: SidePanelProps): JSX.Element => {
+  const wrapperRef = useRef(null);
+
   return (
-    <Overlay onClose={onClose}>
-      <Wrapper role="dialog" isOpen={isOpen}>
-        <header>
-          <h2>{title}</h2>
-          <Button onClick={onClose}>✕</Button>
-        </header>
+    <Transition
+      nodeRef={wrapperRef}
+      in={isOpen}
+      timeout={ANIMATION_DURATION}
+      unmountOnExit
+    >
+      {state => (
+        <div ref={wrapperRef}>
+          <Overlay role="dialog" isOpen={state == 'entered'}>
+            <header>
+              <h2>{title}</h2>
+              <Button onClick={onClose}>✕</Button>
+            </header>
 
-        {children}
-      </Wrapper>
+            {children}
+          </Overlay>
 
-      <Backdrop onClick={onClose} isOpen={isOpen} />
-    </Overlay>
+          <Backdrop onClick={onClose} isOpen={state == 'entered'} />
+          <KeypressListener keyName="Escape" handler={onClose} />
+        </div>
+      )}
+    </Transition>
   );
 };
 
