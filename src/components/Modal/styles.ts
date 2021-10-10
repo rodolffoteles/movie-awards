@@ -1,29 +1,41 @@
 import styled from 'styled-components';
 
-export const ANIMATION_DURATION = 300;
+export const TRANSITION_DURATION = 300;
 
-export const Overlay = styled.div<{ isOpen: boolean }>`
-  background: #fff;
+export const Overlay = styled.div`
+  background: ${props => props.theme.colors.white};
   border-radius: 0.5rem;
   color: ${props => props.theme.colors.black};
-  left: 50%;
-  max-width: 500px;
-  padding: 3rem;
-  position: fixed;
-  text-align: center;
-  transform: translate(-50%, ${props => (props.isOpen ? '-50%' : '100%')});
-  transition: transform ${ANIMATION_DURATION}ms ease,
-    visibility ${ANIMATION_DURATION}ms ease;
-  top: 50%;
-  visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
-  width: 80vw;
-  z-index: 3;
+  padding: 1rem;
+  max-width: 70vw;
+`;
 
-  * {
-    color: inherit;
+export const Wrapper = styled.div`
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: transform ${TRANSITION_DURATION}ms ease;
+
+  &.enter {
+    transform: translateY(100%);
   }
 
-  h1 {
-    margin-bottom: 0.5rem;
+  &.enter-active {
+    transform: translateY(0%);
+  }
+
+  &.exit {
+    transform: translateY(0%);
+  }
+
+  &.exit-active {
+    transform: translateY(100%);
   }
 `;

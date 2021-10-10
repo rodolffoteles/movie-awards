@@ -12,7 +12,7 @@ import SearchBar from '../../components/SearchBar';
 import SearchResult from '../../components/SearchResult';
 import SidePanel from '../../components/SidePanel';
 
-import { Wrapper, SearchBarWrapper } from './styles';
+import { Wrapper, SearchBarWrapper, ModalContent } from './styles';
 import { useEffect } from 'react';
 import { Movie } from '../../types';
 
@@ -33,8 +33,10 @@ const Home = (): JSX.Element => {
   const { ranking, rankMovie, unrankMovie } = useRanking();
 
   const handleChooseMovie = (rank: number) => {
-    setCurrentSelectedRank(rank);
-    toggleSidePannel();
+    // setCurrentSelectedRank(rank);
+    // toggleSidePannel();
+
+    toggleModal();
   };
 
   const handleAddMovie = (movie: Movie) => {
@@ -89,12 +91,17 @@ const Home = (): JSX.Element => {
       </Wrapper>
 
       <Modal isOpen={modalIsOpen} onClose={toggleModal}>
-        <img src={AwardImage} alt="Man and woman dressed up holding an award" />
-        <h1>Great!</h1>
-        <p>
-          You completed your ranking. <br /> These are indeed really good
-          movies.
-        </p>
+        <ModalContent>
+          <img
+            src={AwardImage}
+            alt="Man and woman dressed up holding an award"
+          />
+          <h1>Great!</h1>
+          <p>
+            You completed your ranking. <br /> These are indeed really good
+            movies.
+          </p>
+        </ModalContent>
       </Modal>
 
       <SidePanel

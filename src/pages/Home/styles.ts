@@ -36,6 +36,20 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const ModalContent = styled.div`
+  padding: 1rem;
+  text-align: center;
+
+  img {
+    width: 80%;
+    max-width: 20rem;
+  }
+
+  h1 {
+    margin-top: 1rem;
+  }
+`;
+
 export const SearchBarWrapper = styled.div`
   margin-bottom: 1rem;
   padding: 0 1rem;

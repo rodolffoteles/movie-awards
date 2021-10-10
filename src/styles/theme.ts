@@ -2,8 +2,8 @@ export default {
   colors: {
     text: '#ffffff',
 
-    white: '#fffff',
-    black: '#00000',
+    white: '#ffffff',
+    black: '#000000',
 
     primary: {
       lightest: 'hsl(199, 80%, 36%)',
