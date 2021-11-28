@@ -27,24 +27,26 @@ const SidePanel = ({
   const overlayRef = useRef(null);
 
   return (
-    <CSSTransition
-      in={isOpen}
-      timeout={TRANSITION_DURATION}
-      nodeRef={overlayRef}
-      unmountOnExit
-    >
-      <Overlay ref={overlayRef} role="dialog">
-        <header>
-          <h2>{title}</h2>
-          <Button onClick={onClose}>✕</Button>
-        </header>
+    <>
+      <CSSTransition
+        in={isOpen}
+        timeout={TRANSITION_DURATION}
+        nodeRef={overlayRef}
+        unmountOnExit
+      >
+        <Overlay ref={overlayRef} role="dialog">
+          <header>
+            <h2>{title}</h2>
+            <Button onClick={onClose}>✕</Button>
+          </header>
 
-        <KeypressListener keyName="Escape" handler={onClose} />
-        {children}
-      </Overlay>
-    </CSSTransition>
+          <KeypressListener keyName="Escape" handler={onClose} />
+          {children}
+        </Overlay>
+      </CSSTransition>
 
-    // <Backdrop onClick={onClose} isOpen={state == 'entered'} />
+      <Backdrop onClick={onClose} isOpen={isOpen} />
+    </>
   );
 };
 

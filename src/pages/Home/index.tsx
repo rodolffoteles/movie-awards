@@ -33,10 +33,8 @@ const Home = (): JSX.Element => {
   const { ranking, rankMovie, unrankMovie } = useRanking();
 
   const handleChooseMovie = (rank: number) => {
-    // setCurrentSelectedRank(rank);
-    // toggleSidePannel();
-
-    toggleModal();
+    setCurrentSelectedRank(rank);
+    toggleSidePannel();
   };
 
   const handleAddMovie = (movie: Movie) => {

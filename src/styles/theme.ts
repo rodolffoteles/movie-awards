@@ -1,7 +1,6 @@
 export default {
   colors: {
     text: '#ffffff',
-
     white: '#ffffff',
     black: '#000000',
 
