@@ -16,14 +16,14 @@ export const Wrapper = styled.div`
   input {
     background: ${props => props.theme.colors.primary.default};
     border: 2px solid transparent;
-    border-radius: 1rem;
-    outline: none;
-    box-shadow: none;
     border-color: transparent;
-
+    border-radius: 1rem;
+    box-shadow: none;
+    color: ${props => props.theme.colors.white};
     font-size: inherit;
     font-weight: 500;
     padding: 0.5rem 1rem 0.5rem 3rem;
+    outline: none;
     width: 100%;
 
     &:focus {

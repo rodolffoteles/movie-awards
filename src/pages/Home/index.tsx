@@ -109,6 +109,7 @@ const Home = (): JSX.Element => {
       >
         <SearchBarWrapper>
           <SearchBar
+            focused
             placeholder="Movie title"
             value={searchTerm}
             onChange={handleSearch}
