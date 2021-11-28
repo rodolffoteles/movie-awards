@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TRANSITION_DURATION = 300;
 
 export const Wrapper = styled.div<{ isOpen?: boolean }>`
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(91, 112, 131, 0.4);
   bottom: 0;
   left: 0;
   overflow: auto;

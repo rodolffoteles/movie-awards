@@ -17,7 +17,7 @@ import { useEffect } from 'react';
 import { Movie } from '../../types';
 
 const RANKING_POSITIONS = [1, 2, 3, 4, 5];
-const DEBOUNCE_DELAY = 100;
+const DEBOUNCE_DELAY = 250;
 
 const Home = (): JSX.Element => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

@@ -41,7 +41,6 @@ const slideUp = css`
 export const Overlay = styled.aside`
   background-color: ${props => props.theme.colors.primary.darker};
   bottom: 0;
-  box-shadow: 0 31px 41px 0 rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   height: 100%;
