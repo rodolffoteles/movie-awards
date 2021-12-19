@@ -3,7 +3,7 @@ export type Movie = {
   title: string;
   poster: string;
   year: string;
-  actors: string;
+  actors?: string;
 };
 
 export interface Ranking {

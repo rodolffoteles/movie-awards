@@ -1,11 +1,13 @@
 import type { Movie } from '../../types';
 import {
   Wrapper,
-  DeleteButton,
+  ButtonWrapper,
   AddButton,
   Description,
   RankingNumber,
 } from './styles';
+import Button from '../Button';
+import { ReactComponent as CloseIcon } from '../../assets/svg/close.svg';
 
 interface MovieCardProps {
   /** Movie ranking */
@@ -27,9 +29,17 @@ const MovieCard = ({
   const handleRemoveMovie = () => onRemove?.();
   const handleAddMovie = () => onAdd?.();
 
-  const moviePosterMarkuṕ = movie ? (
+  const moviePosterMarkup = movie ? (
     <>
-      <DeleteButton onClick={handleRemoveMovie}>&times;</DeleteButton>
+      <ButtonWrapper>
+        <Button
+          icon={<CloseIcon />}
+          onClick={handleRemoveMovie}
+          size="small"
+          color="danger"
+        />
+      </ButtonWrapper>
+
       <img src={movie.poster} alt={movie.title} />
     </>
   ) : (
@@ -38,7 +48,7 @@ const MovieCard = ({
 
   return (
     <Wrapper>
-      {moviePosterMarkuṕ}
+      {moviePosterMarkup}
       <Description>
         <RankingNumber>{rank}</RankingNumber>
         {movie?.title}

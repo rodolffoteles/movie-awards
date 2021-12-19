@@ -36,23 +36,10 @@ export const AddButton = styled.button`
   }
 `;
 
-export const DeleteButton = styled.button`
-  background: ${props => props.theme.colors.danger.default};
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.5rem;
-  font-weight: bold;
-  height: 2rem;
+export const ButtonWrapper = styled.div`
   position: absolute;
-  right: -1rem;
-  top: -1rem;
-  transition: background 0.2s ease, color 0.2s ease;
-  width: 2rem;
-
-  &:hover {
-    background: ${props => props.theme.colors.danger.light};
-  }
+  right: -0.7rem;
+  top: -0.7rem;
 `;
 
 export const Description = styled.div`

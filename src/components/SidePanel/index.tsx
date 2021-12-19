@@ -6,6 +6,7 @@ import Button from '../Button';
 import Backdrop from '../Backdrop';
 
 import { Overlay, TRANSITION_DURATION } from './styles';
+import { ReactComponent as CloseIcon } from '../../assets/svg/close.svg';
 
 interface SidePanelProps {
   /** The content to display inside panel */
@@ -37,7 +38,7 @@ const SidePanel = ({
         <Overlay ref={overlayRef} role="dialog">
           <header>
             <h2>{title}</h2>
-            <Button onClick={onClose}>✕</Button>
+            <Button plain icon={<CloseIcon />} onClick={onClose} />
           </header>
 
           <KeypressListener keyName="Escape" handler={onClose} />
