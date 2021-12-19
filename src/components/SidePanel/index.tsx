@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import KeypressListener from '../KeypressListener';
 import Button from '../Button';
 import Backdrop from '../Backdrop';
+import ScrollLock from '../ScrollLock';
 
 import { Overlay, TRANSITION_DURATION } from './styles';
 import { ReactComponent as CloseIcon } from '../../assets/svg/close.svg';
@@ -41,6 +42,7 @@ const SidePanel = ({
             <Button plain icon={<CloseIcon />} onClick={onClose} />
           </header>
 
+          <ScrollLock />
           <KeypressListener keyName="Escape" handler={onClose} />
           {children}
         </Overlay>
