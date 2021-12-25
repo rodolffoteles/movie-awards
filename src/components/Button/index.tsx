@@ -6,7 +6,7 @@ export interface ButtonProps {
   /** Callback when clicked */
   onClick?(): void;
   /** Icon to display to the left of the button content */
-  icon?: React.ReactElement | string;
+  icon?: React.ReactElement;
   /** Renders a button that looks more like a plain text */
   plain?: boolean;
   /** Outilines the button */
