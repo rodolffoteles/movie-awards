@@ -18,8 +18,8 @@ const KeypressListener = ({
       }
     };
 
-    window.addEventListener('keyup', handleKeyEvent);
-    return () => window.removeEventListener('keyup', handleKeyEvent);
+    document.addEventListener('keyup', handleKeyEvent);
+    return () => document.removeEventListener('keyup', handleKeyEvent);
   }, [keyName, handler]);
 
   return null;
