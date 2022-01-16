@@ -11,7 +11,7 @@ import { ReactComponent as CloseIcon } from '../../assets/svg/close.svg';
 
 interface SidePanelProps {
   /** The content to display inside panel */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** The content to display inside panel */
   title: string;
   /** Whether or not the panel is open */
