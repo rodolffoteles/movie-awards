@@ -2,8 +2,6 @@
 
 Web app that allow users to rank their favorite movies of all time.
 
-This project was developed in an effort to learn both redux and typescript.
-
 ## Getting Started
 
 ### Prerequisites
@@ -41,6 +39,5 @@ This project was developed in an effort to learn both redux and typescript.
 ## Built With
 
 - [React.js](https://reactjs.org/), using [create-react-app](https://create-react-app.dev/)
-- [Redux](https://redux.js.org/)
 - [Axios](https://github.com/axios/axios)
 - [Styled Components](https://styled-components.com/)
