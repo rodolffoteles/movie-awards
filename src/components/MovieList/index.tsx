@@ -20,7 +20,6 @@ const MovieList = ({ movies, onAdd, ranking }: MovieListProps): JSX.Element => {
   const isMovieAlreadySelected = (imdbId: string) =>
     Object.values(ranking).some(movie => movie.imdbId === imdbId);
 
-  console.log(movies);
   return (
     <Wrapper>
       {movies.map((movie, index) => (
@@ -39,6 +38,7 @@ const MovieList = ({ movies, onAdd, ranking }: MovieListProps): JSX.Element => {
               icon={<PlusIcon />}
               onClick={() => handleAddMovie(movie)}
               disabled={isMovieAlreadySelected(movie.imdbId)}
+              accessibilityLabel="Add movie"
             />
           </Center>
         </MovieListItem>
