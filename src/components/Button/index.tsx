@@ -17,6 +17,8 @@ export interface ButtonProps {
   disabled?: boolean;
   /** Color schema of the button */
   color?: 'primary' | 'danger';
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
 }
 
 const Button = ({
@@ -28,11 +30,13 @@ const Button = ({
   color = 'primary',
   size = 'medium',
   disabled,
+  accessibilityLabel,
 }: ButtonProps): JSX.Element => {
   const iconOnly = icon != null && children == null;
 
   return (
     <Wrapper
+      aria-label={accessibilityLabel}
       disabled={disabled}
       outline={outline}
       onClick={onClick}

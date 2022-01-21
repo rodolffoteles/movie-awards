@@ -23,7 +23,17 @@ describe('<Button/>', () => {
       const mockIconContet = 'mock icon';
       const Icon = () => <div>{mockIconContet}</div>;
       renderWithProviders(<Button icon={<Icon />} />);
-      expect(screen.getByText(mockIconContet)).toBeInTheDocument();
+      expect(screen.queryByText(mockIconContet)).toBeInTheDocument();
+    });
+  });
+
+  describe('accessibilityLabel', () => {
+    it('it sets aria-label to the button', () => {
+      const accessibilityLabel = 'mock accessibility label';
+      renderWithProviders(<Button accessibilityLabel={accessibilityLabel} />);
+      expect(
+        screen.queryByLabelText(accessibilityLabel, { selector: 'button' })
+      ).toBeInTheDocument();
     });
   });
 
